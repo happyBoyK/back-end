@@ -1,0 +1,17 @@
+{
+    "version": 3,
+    "sources": [
+        "..\\..\\..\\src\\admin\\service\\teacharging.js"
+    ],
+    "names": [
+        "module",
+        "exports",
+        "think",
+        "Service"
+    ],
+    "mappings": "AAAA;;AACAA,OAAOC,OAAP,GAAiB,cAAcC,MAAMC,OAApB,CAA4B,EAA7C",
+    "file": "..\\..\\..\\src\\admin\\service\\teacharging.js",
+    "sourcesContent": [
+        "'use strict';\r\nmodule.exports = class extends think.Service {\r\n\r\n}"
+    ]
+}

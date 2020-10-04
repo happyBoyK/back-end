@@ -1,0 +1,18 @@
+{
+    "version": 3,
+    "sources": [
+        "..\\..\\..\\..\\src\\wx\\logic\\admin\\wx_specification.js"
+    ],
+    "names": [
+        "module",
+        "exports",
+        "think",
+        "Logic",
+        "indexAction"
+    ],
+    "mappings": "AAAA;;;AAGAA,OAAOC,OAAP,GAAiB,cAAcC,MAAMC,KAApB,CAA0B;AACzCC,gBAAc,CACb;AAFwC,CAA3C",
+    "file": "..\\..\\..\\..\\src\\wx\\logic\\admin\\wx_specification.js",
+    "sourcesContent": [
+        "/**\n*规格\n*/\nmodule.exports = class extends think.Logic {\n  indexAction() {\n  }\n};"
+    ]
+}

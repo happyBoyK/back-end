@@ -1,0 +1,49 @@
+{
+    "version": 3,
+    "sources": [
+        "..\\..\\..\\..\\src\\wx\\controller\\api\\index.js"
+    ],
+    "names": [
+        "Base",
+        "require",
+        "module",
+        "exports",
+        "indexAction",
+        "banner",
+        "model",
+        "select",
+        "channel",
+        "where",
+        "parent_id",
+        "limit",
+        "order",
+        "sort_order",
+        "newGoods",
+        "field",
+        "is_new",
+        "hotGoods",
+        "is_hot",
+        "brandList",
+        "is_index",
+        "topicList",
+        "categoryList",
+        "name",
+        "newCategoryList",
+        "categoryItem",
+        "childCategoryIds",
+        "id",
+        "getField",
+        "categoryGoods",
+        "category_id",
+        "push",
+        "goodsList",
+        "success",
+        "newGoodsList",
+        "hotGoodsList"
+    ],
+    "mappings": ";;AAAA,MAAMA,OAAOC,QAAQ,WAAR,CAAb;;AAEAC,OAAOC,OAAP,GAAiB,cAAcH,IAAd,CAAmB;AAC5BI,aAAN,GAAoB;AAAA;;AAAA;AAClB,YAAMC,SAAS,MAAM,MAAKC,KAAL,CAAW,OAAX,EAAoBC,MAApB,EAArB;AACA,YAAMC,UAAU,MAAM,MAAKF,KAAL,CAAW,aAAX,EAA0BG,KAA1B,CAAgC,EAACC,WAAW,CAAZ,EAAhC,EAAgDC,KAAhD,CAAsD,CAAtD,EAAyDC,KAAzD,CAA+D,EAACC,YAAY,KAAb,EAA/D,EAAoFN,MAApF,EAAtB;AACA,YAAMO,WAAW,MAAM,MAAKR,KAAL,CAAW,UAAX,EAAuBS,KAAvB,CAA6B,CAAC,IAAD,EAAO,MAAP,EAAe,cAAf,EAA+B,cAA/B,CAA7B,EAA6EN,KAA7E,CAAmF,EAACO,QAAQ,CAAT,EAAnF,EAAgGL,KAAhG,CAAsG,CAAtG,EAAyGJ,MAAzG,EAAvB;AACA,YAAMU,WAAW,MAAM,MAAKX,KAAL,CAAW,UAAX,EAAuBS,KAAvB,CAA6B,CAAC,IAAD,EAAO,MAAP,EAAe,cAAf,EAA+B,cAA/B,EAA+C,aAA/C,CAA7B,EAA4FN,KAA5F,CAAkG,EAACS,QAAQ,CAAT,EAAlG,EAA+GP,KAA/G,CAAqH,CAArH,EAAwHJ,MAAxH,EAAvB;AACA,YAAMY,YAAY,MAAM,MAAKb,KAAL,CAAW,UAAX,EAAuBG,KAAvB,CAA6B,EAACW,UAAU,CAAX,EAA7B,EAA4CR,KAA5C,CAAkD,EAACC,YAAY,KAAb,EAAlD,EAAuEF,KAAvE,CAA6E,CAA7E,EAAgFJ,MAAhF,EAAxB;AACA,YAAMc,YAAY,MAAM,MAAKf,KAAL,CAAW,UAAX,EAAuBK,KAAvB,CAA6B,CAA7B,EAAgCJ,MAAhC,EAAxB;;AAEA,YAAMe,eAAe,MAAM,MAAKhB,KAAL,CAAW,aAAX,EAA0BG,KAA1B,CAAgC,EAACC,WAAW,CAAZ,EAAea,MAAM,CAAC,IAAD,EAAO,IAAP,CAArB,EAAhC,EAAoEhB,MAApE,EAA3B;AACA,YAAMiB,kBAAkB,EAAxB;AACA,WAAK,MAAMC,YAAX,IAA2BH,YAA3B,EAAyC;AACvC,cAAMI,mBAAmB,MAAM,MAAKpB,KAAL,CAAW,aAAX,EAA0BG,KAA1B,CAAgC,EAACC,WAAWe,aAAaE,EAAzB,EAAhC,EAA8DC,QAA9D,CAAuE,IAAvE,EAA6E,GAA7E,CAA/B;AACA,cAAMC,gBAAgB,MAAM,MAAKvB,KAAL,CAAW,UAAX,EAAuBS,KAAvB,CAA6B,CAAC,IAAD,EAAO,MAAP,EAAe,cAAf,EAA+B,cAA/B,CAA7B,EAA6EN,KAA7E,CAAmF,EAACqB,aAAa,CAAC,IAAD,EAAOJ,gBAAP,CAAd,EAAnF,EAA4Hf,KAA5H,CAAkI,CAAlI,EAAqIJ,MAArI,EAA5B;AACAiB,wBAAgBO,IAAhB,CAAqB;AACnBJ,cAAIF,aAAaE,EADE;AAEnBJ,gBAAME,aAAaF,IAFA;AAGnBS,qBAAWH;AAHQ,SAArB;AAKD;;AAED,aAAO,MAAKI,OAAL,CAAa;AAClB5B,gBAAQA,MADU;AAElBG,iBAASA,OAFS;AAGlB0B,sBAAcpB,QAHI;AAIlBqB,sBAAclB,QAJI;AAKlBE,mBAAWA,SALO;AAMlBE,mBAAWA,SANO;AAOlBC,sBAAcE;AAPI,OAAb,CAAP;AApBkB;AA6BnB;AA9BiC,CAApC",
+    "file": "..\\..\\..\\..\\src\\wx\\controller\\api\\index.js",
+    "sourcesContent": [
+        "const Base = require('./base.js');\n\nmodule.exports = class extends Base {\n  async indexAction() {\n    const banner = await this.model('wx_ad').select();\n    const channel = await this.model('wx_category').where({parent_id: 0}).limit(4).order({sort_order: 'asc'}).select();\n    const newGoods = await this.model('wx_goods').field(['id', 'name', 'list_pic_url', 'retail_price']).where({is_new: 1}).limit(4).select();\n    const hotGoods = await this.model('wx_goods').field(['id', 'name', 'list_pic_url', 'retail_price', 'goods_brief']).where({is_hot: 1}).limit(3).select();\n    const brandList = await this.model('wx_brand').where({is_index: 1}).order({sort_order: 'asc'}).limit(4).select();\n    const topicList = await this.model('wx_topic').limit(3).select();\n\n    const categoryList = await this.model('wx_category').where({parent_id: 0, name: ['<>', '推荐']}).select();\n    const newCategoryList = [];\n    for (const categoryItem of categoryList) {\n      const childCategoryIds = await this.model('wx_category').where({parent_id: categoryItem.id}).getField('id', 100);\n      const categoryGoods = await this.model('wx_goods').field(['id', 'name', 'list_pic_url', 'retail_price']).where({category_id: ['IN', childCategoryIds]}).limit(7).select();\n      newCategoryList.push({\n        id: categoryItem.id,\n        name: categoryItem.name,\n        goodsList: categoryGoods\n      });\n    }\n\n    return this.success({\n      banner: banner,\n      channel: channel,\n      newGoodsList: newGoods,\n      hotGoodsList: hotGoods,\n      brandList: brandList,\n      topicList: topicList,\n      categoryList: newCategoryList\n    });\n  }\n};\n"
+    ]
+}

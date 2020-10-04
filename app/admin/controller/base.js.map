@@ -1,0 +1,41 @@
+{
+    "version": 3,
+    "sources": [
+        "..\\..\\..\\src\\admin\\controller\\base.js"
+    ],
+    "names": [
+        "think",
+        "require",
+        "module",
+        "exports",
+        "Controller",
+        "user",
+        "__before",
+        "ctx",
+        "method",
+        "fail",
+        "action",
+        "userToken",
+        "header",
+        "isEmpty",
+        "tokenServiceInstance",
+        "service",
+        "verifyTokenResult",
+        "verifyToken",
+        "userinfo",
+        "getPage",
+        "params",
+        "get",
+        "page",
+        "Number",
+        "pageSize",
+        "getShopId",
+        "userInfo",
+        "shop_id"
+    ],
+    "mappings": ";AACA;;;;AAEA,MAAM,EAAEA,KAAF,KAAYC,QAAQ,SAAR,CAAlB;;AAEA;AACAC,OAAOC,OAAP,GAAiB,cAAcH,MAAMI,UAApB,CAA+B;AAC9CC;AACA;;;AAGMC,UAAN,GAAiB;AAAA;;AAAA;AACf,UAAG,MAAKC,GAAL,CAASC,MAAT,IAAiB,MAApB,EAA2B;AACzB,eAAO,MAAKC,IAAL,CAAU,IAAV,CAAP;AACD;AACD,UAAI,MAAKF,GAAL,CAASG,MAAT,KAAoB,OAApB,IAA+B,MAAKH,GAAL,CAASG,MAAT,KAAoB,UAAvD,EAAmE;AACjE;AACD;;AAED;AACA,UAAI,MAAKH,GAAL,CAASG,MAAT,KAAoB,OAApB,IAA+B,MAAKH,GAAL,CAASG,MAAT,KAAoB,UAAvD,EAAmE;AACjE;AACD;AACD;AACA,UAAIC,YAAY,MAAKC,MAAL,CAAY,SAAZ,CAAhB;AACA,UAAGZ,MAAMa,OAAN,CAAcF,SAAd,CAAH,EAA4B;AAC1B,eAAO,MAAKF,IAAL,CAAU,IAAV,CAAP;AACD;AACD;AACA,UAAIK,uBAAuB,MAAKC,OAAL,CAAa,OAAb,EAAqB,OAArB,CAA3B;AACA;AACA,UAAIC,oBAAoB,MAAMF,qBAAqBG,WAArB,CAAiCN,SAAjC,CAA9B;AACA;AACA,UAAI,CAACK,iBAAL,EAAwB;AACtB,eAAO,MAAKP,IAAL,CAAU,IAAV,CAAP;AACD;AACD;AACA,YAAKJ,IAAL,GAAYW,kBAAkBE,QAA9B;AACA;AACA;;;;;;AA5Be;AAkChB;AACDC,YAAU;AACR,UAAMC,SAAS,KAAKC,GAAL,EAAf;AACA,QAAIC,OAAOtB,MAAMa,OAAN,CAAcU,OAAOH,OAAOE,IAAd,CAAd,IAAqC,CAArC,GAAyCC,OAAOH,OAAOE,IAAd,CAApD;AACA,QAAIE,WAAWxB,MAAMa,OAAN,CAAcU,OAAOH,OAAOI,QAAd,CAAd,IAAyC,EAAzC,GAA8CD,OAAOH,OAAOI,QAAd,CAA7D;AACAF,WAAOA,OAAO,CAAP,GAAW,CAAX,GAAeA,IAAtB;AACAE,eAAWA,WAAW,EAAX,GAAgB,EAAhB,GAAqBA,QAAhC;AACA,WAAO,CAACF,IAAD,EAAOE,QAAP,CAAP;AACD;AACDC,cAAY;AACV,UAAMpB,OAAO,KAAKqB,QAAL,EAAb;AACA,WAAOrB,KAAKsB,OAAZ;AACD;AACC;AACFD,aAAW;AACT,WAAO,KAAKrB,IAAZ;AACD;AAvD6C,CAAhD",
+    "file": "..\\..\\..\\src\\admin\\controller\\base.js",
+    "sourcesContent": [
+        "\n'use strict';\n\nconst { think } = require(\"thinkjs\");\n\n//定义用户数据变量\nmodule.exports = class extends think.Controller {\n  user;\n  /**\n   *@description action请求验证用户token\n   */\n  async __before() {   \n    if(this.ctx.method!='POST'){\n      return this.fail(9993);\n    }\n    if (this.ctx.action === 'login' || this.ctx.action === 'register') {\n      return;\n    }\n\n    //登录、注册不验证token\n    if (this.ctx.action === 'login' || this.ctx.action === 'register') {\n      return;\n    }\n    //获取http-header token\n    let userToken = this.header(\"x-token\");\n    if(think.isEmpty(userToken)){\n      return this.fail(9998);\n    }  \t\n    //调用tokenservice中间件\n    let tokenServiceInstance = this.service(\"token\",\"admin\");\n    //验证token\n    let verifyTokenResult = await tokenServiceInstance.verifyToken(userToken);\n    //服务器错误时\n    if (!verifyTokenResult) {\n      return this.fail(9997);\n    }\n    //获取用户信息\n    this.user = verifyTokenResult.userinfo;\n    //写入新token\n    /*\n    let newToken = await tokenServiceInstance.createToken({\n      userInfo: verifyTokenResult.userInfo\n    });\n    this.header(\"x-token\", newToken);\n    */\n  }\n  getPage() {\n    const params = this.get();\n    let page = think.isEmpty(Number(params.page)) ? 1 : Number(params.page);\n    let pageSize = think.isEmpty(Number(params.pageSize)) ? 10 : Number(params.pageSize);\n    page = page < 1 ? 1 : page;\n    pageSize = pageSize < 10 ? 10 : pageSize;\n    return [page, pageSize];\n  }\n  getShopId() {\n    const user = this.userInfo();\n    return user.shop_id;\n  }\n    //用户信息\n  userInfo() {\n    return this.user;\n  }\n}"
+    ]
+}

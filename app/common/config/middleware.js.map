@@ -1,0 +1,47 @@
+{
+    "version": 3,
+    "sources": [
+        "..\\..\\..\\src\\common\\config\\middleware.js"
+    ],
+    "names": [
+        "path",
+        "require",
+        "isDev",
+        "think",
+        "env",
+        "id_16",
+        "id",
+        "generator",
+        "kcors",
+        "module",
+        "exports",
+        "handle",
+        "options",
+        "logRequest",
+        "sendResponseTime",
+        "enable",
+        "root",
+        "join",
+        "ROOT_PATH",
+        "publicPath",
+        "isCli",
+        "debug",
+        "sourceMap",
+        "error",
+        "err",
+        "ctx",
+        "_id",
+        "datetime",
+        "Date",
+        "logger",
+        "fail",
+        "Number",
+        "body",
+        "errno"
+    ],
+    "mappings": "AAAA,MAAMA,OAAOC,QAAQ,MAAR,CAAb;AACA,MAAMC,QAAQC,MAAMC,GAAN,KAAc,aAA5B;AACA,MAAMC,QAAQJ,QAAQ,OAAR,CAAd;AACA,MAAMK,KAAKD,MAAME,SAAN,CAAgB,CAAhB,CAAX;AACA,MAAMC,QAAQP,QAAQ,OAAR,CAAd;;AAEAQ,OAAOC,OAAP,GAAiB,CACf;AACEC,UAAQH,KADV,EACiB;AACfI,WAAS;AAFX,CADe,EAKf;AACED,UAAQ,MADV;AAEEC,WAAS;AACPC,gBAAYX,KADL;AAEPY,sBAAkBZ;AAFX;AAFX,CALe,EAYf;AACES,UAAQ,UADV;AAEEI,UAAQb,KAFV;AAGEU,WAAS;AACPI,UAAMhB,KAAKiB,IAAL,CAAUd,MAAMe,SAAhB,EAA2B,KAA3B,CADC;AAEPC,gBAAY;AAFL;AAHX,CAZe,EAoBf;AACER,UAAQ,OADV;AAEEI,UAAQ,CAACZ,MAAMiB,KAFjB;AAGER,WAAS;AACPS,WAAO,IADA;AAEPC,eAAW,KAFJ;AAGPC,UAAMC,GAAN,EAAWC,GAAX,EAAgB;AACd,UAAIC,MAAIvB,MAAMwB,QAAN,CAAe,IAAIC,IAAJ,EAAf,EAA0B,mBAAiBtB,IAA3C,CAAR;AACAH,YAAM0B,MAAN,CAAaN,KAAb,CAAmB,OAAnB,EAA2BG,GAA3B,EAA+B,UAA/B,EAA0CF,GAA1C;AACA,aAAOC,IAAIK,IAAJ,CAASC,OAAON,IAAIO,IAAJ,CAASC,KAAhB,CAAT,EAAgC,eAAaP,GAA7C,CAAP;AACD;AAPM;AAHX,CApBe,EAiCf;AACEf,UAAQ,SADV;AAEEC,WAAS;AAFX,CAjCe,EAqCf;AACED,UAAQ,QADV;AAEEC,WAAS;AAFX,CArCe,EAyCf;AACED,UAAQ,UADV;AAEEC,WAAS;AAFX,CAzCe,EA6Cf,OA7Ce,EA8Cf,YA9Ce,CAAjB",
+    "file": "..\\..\\..\\src\\common\\config\\middleware.js",
+    "sourcesContent": [
+        "const path = require('path');\nconst isDev = think.env === 'development';\nconst id_16 = require('id-16');\nconst id = id_16.generator(4);\nconst kcors = require('kcors');\n\nmodule.exports = [\n  {  \n    handle: kcors, // 处理跨域\n    options: {}\n  },\n  {\n    handle: 'meta',\n    options: {\n      logRequest: isDev,\n      sendResponseTime: isDev\n    }\n  },\n  {\n    handle: 'resource',\n    enable: isDev,\n    options: {\n      root: path.join(think.ROOT_PATH, 'www'),\n      publicPath: /^\\/(static|favicon\\.ico)/\n    }\n  },\n  {\n    handle: 'trace',\n    enable: !think.isCli,\n    options: {\n      debug: true,\n      sourceMap: false,\n      error(err, ctx) {\n        let _id=think.datetime(new Date(),'YYYYMMDDHHmmss'+id());\n        think.logger.error(\"异常编号:\",_id,\" , 异常内容:\",err);\n        return ctx.fail(Number(ctx.body.errno),\"请求失败！错误ID：\"+_id);\n      }\n    }\n  },\n  {\n    handle: 'payload',\n    options: {}\n  },\n  {\n    handle: 'router',\n    options: {}\n  },\n  {\n    handle: 'paramMid',\n    options: {}\n  },\n  'logic',\n  'controller'\n];\n"
+    ]
+}

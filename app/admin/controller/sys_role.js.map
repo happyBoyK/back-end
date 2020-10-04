@@ -1,0 +1,37 @@
+{
+    "version": 3,
+    "sources": [
+        "..\\..\\..\\src\\admin\\controller\\sys_role.js"
+    ],
+    "names": [
+        "think",
+        "require",
+        "Base",
+        "module",
+        "exports",
+        "indexAction",
+        "display",
+        "allDataAction",
+        "data",
+        "model",
+        "allData",
+        "success",
+        "pageDataAction",
+        "param",
+        "post",
+        "pageData",
+        "addDataAction",
+        "logger",
+        "info",
+        "addData",
+        "updateDataAction",
+        "updateData",
+        "delDataAction",
+        "delData"
+    ],
+    "mappings": ";;AAAA,MAAM,EAAEA,KAAF,KAAYC,QAAQ,SAAR,CAAlB;AACA,MAAMC,OAAOD,QAAQ,WAAR,CAAb;;AAEAE,OAAOC,OAAP,GAAiB,cAAcF,IAAd,CAAmB;AAC5BG,aAAN,GAAoB;AAAA;;AAAA;AAClB,aAAO,MAAKC,OAAL,EAAP;AADkB;AAEnB;;AAEKC,eAAN,GAAsB;AAAA;;AAAA;AACpB,UAAIC,OAAK,MAAM,OAAKC,KAAL,CAAW,UAAX,EAAuBC,OAAvB,EAAf;AACA,aAAO,OAAKC,OAAL,CAAaH,IAAb,CAAP;AAFoB;AAGrB;;AAEKI,gBAAN,GAAuB;AAAA;;AAAA;AACrB,UAAIC,QAAM,OAAKC,IAAL,EAAV;AACA,UAAIN,OAAK,MAAM,OAAKC,KAAL,CAAW,UAAX,EAAuBM,QAAvB,CAAgCF,KAAhC,CAAf;AACA,aAAO,OAAKF,OAAL,CAAaH,IAAb,CAAP;AAHqB;AAItB;;AAEKQ,eAAN,GAAsB;AAAA;;AAAA;AACpB,UAAIH,QAAM,OAAKC,IAAL,EAAV;AACAd,YAAMiB,MAAN,CAAaC,IAAb,CAAkB,QAAlB,EAA4BL,KAA5B;AACA,YAAM,OAAKJ,KAAL,CAAW,UAAX,EAAuBU,OAAvB,CAA+BN,KAA/B,CAAN;AACA,aAAO,OAAKF,OAAL,EAAP;AAJoB;AAKrB;;AAEKS,kBAAN,GAAyB;AAAA;;AAAA;AACvB,UAAIP,QAAM,OAAKC,IAAL,EAAV;AACA,YAAM,OAAKL,KAAL,CAAW,UAAX,EAAuBY,UAAvB,CAAkCR,KAAlC,CAAN;AACA,aAAO,OAAKF,OAAL,EAAP;AAHuB;AAIxB;;AAEKW,eAAN,GAAsB;AAAA;;AAAA;AACpB,UAAIT,QAAM,OAAKC,IAAL,EAAV;AACA,YAAM,OAAKL,KAAL,CAAW,UAAX,EAAuBc,OAAvB,CAA+BV,KAA/B,CAAN;AACA,aAAO,OAAKF,OAAL,EAAP;AAHoB;AAIrB;;AAjCiC,CAApC",
+    "file": "..\\..\\..\\src\\admin\\controller\\sys_role.js",
+    "sourcesContent": [
+        "const { think } = require('thinkjs');\nconst Base = require('./base.js');\n\nmodule.exports = class extends Base {\n  async indexAction() {\n    return this.display();\n  }\n\n  async allDataAction() {\n    let data=await this.model(\"sys_role\").allData()\n    return this.success(data);\n  }\n\n  async pageDataAction() {\n    let param=this.post();\n    let data=await this.model(\"sys_role\").pageData(param);\n    return this.success(data);\n  }\n\n  async addDataAction() {\n    let param=this.post();\n    think.logger.info('接受到的参数', param);\n    await this.model(\"sys_role\").addData(param);\n    return this.success();\n  }\n\n  async updateDataAction() {\n    let param=this.post();\n    await this.model(\"sys_role\").updateData(param);\n    return this.success();\n  }   \n    \n  async delDataAction() {\n    let param=this.post();\n    await this.model(\"sys_role\").delData(param);\n    return this.success();\n  }\n\n};\n"
+    ]
+}

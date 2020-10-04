@@ -1,0 +1,36 @@
+{
+    "version": 3,
+    "sources": [
+        "..\\..\\..\\..\\src\\wx\\controller\\admin\\wx_goods_issue.js"
+    ],
+    "names": [
+        "Base",
+        "require",
+        "module",
+        "exports",
+        "indexAction",
+        "display",
+        "allDataAction",
+        "data",
+        "model",
+        "allData",
+        "success",
+        "pageDataAction",
+        "param",
+        "post",
+        "pageData",
+        "addDataAction",
+        "addData",
+        "updateDataAction",
+        "updateData",
+        "delDataAction",
+        "delData",
+        "delFlagDataAction",
+        "delFlagData"
+    ],
+    "mappings": ";;AAAA;;;AAGA,MAAMA,OAAOC,QAAQ,mCAAR,CAAb;AACAC,OAAOC,OAAP,GAAiB,cAAcH,IAAd,CAAmB;AAC5BI,aAAN,GAAoB;AAAA;;AAAA;AAClB,aAAO,MAAKC,OAAL,EAAP;AADkB;AAEnB;;AAEKC,eAAN,GAAsB;AAAA;;AAAA;AACpB,UAAIC,OAAK,MAAM,OAAKC,KAAL,CAAW,gBAAX,EAA6BC,OAA7B,EAAf;AACA,aAAO,OAAKC,OAAL,CAAaH,IAAb,CAAP;AAFoB;AAGrB;;AAEKI,gBAAN,GAAuB;AAAA;;AAAA;AACrB,UAAIC,QAAM,OAAKC,IAAL,EAAV;AACA,UAAIN,OAAK,MAAM,OAAKC,KAAL,CAAW,gBAAX,EAA6BM,QAA7B,CAAsCF,KAAtC,CAAf;AACA,aAAO,OAAKF,OAAL,CAAaH,IAAb,CAAP;AAHqB;AAItB;;AAEKQ,eAAN,GAAsB;AAAA;;AAAA;AACpB,UAAIH,QAAM,OAAKC,IAAL,EAAV;AACA,YAAM,OAAKL,KAAL,CAAW,gBAAX,EAA6BQ,OAA7B,CAAqCJ,KAArC,CAAN;AACA,aAAO,OAAKF,OAAL,EAAP;AAHoB;AAIrB;;AAEKO,kBAAN,GAAyB;AAAA;;AAAA;AACvB,UAAIL,QAAM,OAAKC,IAAL,EAAV;AACA,YAAM,OAAKL,KAAL,CAAW,gBAAX,EAA6BU,UAA7B,CAAwCN,KAAxC,CAAN;AACA,aAAO,OAAKF,OAAL,EAAP;AAHuB;AAIxB;;AAEKS,eAAN,GAAsB;AAAA;;AAAA;AACpB,UAAIP,QAAM,OAAKC,IAAL,EAAV;AACA,YAAM,OAAKL,KAAL,CAAW,gBAAX,EAA6BY,OAA7B,CAAqCR,KAArC,CAAN;AACA,aAAO,OAAKF,OAAL,EAAP;AAHoB;AAIrB;AACKW,mBAAN,GAA0B;AAAA;;AAAA;AACxB,UAAIT,QAAM,OAAKC,IAAL,EAAV;AACA,YAAM,OAAKL,KAAL,CAAW,gBAAX,EAA6Bc,WAA7B,CAAyCV,KAAzC,CAAN;AACA,aAAO,OAAKF,OAAL,EAAP;AAHwB;AAIzB;AArCiC,CAApC",
+    "file": "..\\..\\..\\..\\src\\wx\\controller\\admin\\wx_goods_issue.js",
+    "sourcesContent": [
+        "/**\n*商品的常见问题\n*/\nconst Base = require('../../../admin/controller/base.js');\nmodule.exports = class extends Base {\n  async indexAction() {\n    return this.display();\n  }\n\n  async allDataAction() {\n    let data=await this.model('wx_goods_issue').allData()\n    return this.success(data);\n  }\n\n  async pageDataAction() {\n    let param=this.post();\n    let data=await this.model('wx_goods_issue').pageData(param);\n    return this.success(data);\n  }\n\n  async addDataAction() {\n    let param=this.post();\n    await this.model('wx_goods_issue').addData(param);\n    return this.success();\n  }\n\n  async updateDataAction() {\n    let param=this.post();\n    await this.model('wx_goods_issue').updateData(param);\n    return this.success();\n  }\n\n  async delDataAction() {\n    let param=this.post();\n    await this.model('wx_goods_issue').delData(param);\n    return this.success();\n  }\n  async delFlagDataAction() {\n    let param=this.post();\n    await this.model('wx_goods_issue').delFlagData(param);\n    return this.success();\n  }\n};"
+    ]
+}

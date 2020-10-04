@@ -1,0 +1,38 @@
+{
+    "version": 3,
+    "sources": [
+        "..\\..\\..\\..\\src\\wx\\controller\\admin\\wx_attribute.js"
+    ],
+    "names": [
+        "Base",
+        "require",
+        "module",
+        "exports",
+        "indexAction",
+        "display",
+        "allDataAction",
+        "data",
+        "model",
+        "allData",
+        "success",
+        "findListByPidAction",
+        "param",
+        "post",
+        "findListByPid",
+        "pageDataAction",
+        "pageData",
+        "addDataAction",
+        "addData",
+        "updateDataAction",
+        "updateData",
+        "delDataAction",
+        "delData",
+        "delFlagDataAction",
+        "delFlagData"
+    ],
+    "mappings": ";;AAAA;;;AAGA,MAAMA,OAAOC,QAAQ,mCAAR,CAAb;AACAC,OAAOC,OAAP,GAAiB,cAAcH,IAAd,CAAmB;AAC5BI,aAAN,GAAoB;AAAA;;AAAA;AAClB,aAAO,MAAKC,OAAL,EAAP;AADkB;AAEnB;;AAEKC,eAAN,GAAsB;AAAA;;AAAA;AACpB,UAAIC,OAAK,MAAM,OAAKC,KAAL,CAAW,cAAX,EAA2BC,OAA3B,EAAf;AACA,aAAO,OAAKC,OAAL,CAAaH,IAAb,CAAP;AAFoB;AAGrB;;AAEKI,qBAAN,GAA4B;AAAA;;AAAA;AAC1B,UAAIC,QAAM,OAAKC,IAAL,EAAV;AACA,UAAIN,OAAK,MAAM,OAAKC,KAAL,CAAW,cAAX,EAA2BM,aAA3B,CAAyCF,KAAzC,CAAf;AACA,aAAO,OAAKF,OAAL,CAAaH,IAAb,CAAP;AAH0B;AAI3B;;AAEKQ,gBAAN,GAAuB;AAAA;;AAAA;AACrB,UAAIH,QAAM,OAAKC,IAAL,EAAV;AACA,UAAIN,OAAK,MAAM,OAAKC,KAAL,CAAW,cAAX,EAA2BQ,QAA3B,CAAoCJ,KAApC,CAAf;AACA,aAAO,OAAKF,OAAL,CAAaH,IAAb,CAAP;AAHqB;AAItB;;AAEKU,eAAN,GAAsB;AAAA;;AAAA;AACpB,UAAIL,QAAM,OAAKC,IAAL,EAAV;AACA,YAAM,OAAKL,KAAL,CAAW,cAAX,EAA2BU,OAA3B,CAAmCN,KAAnC,CAAN;AACA,aAAO,OAAKF,OAAL,EAAP;AAHoB;AAIrB;;AAEKS,kBAAN,GAAyB;AAAA;;AAAA;AACvB,UAAIP,QAAM,OAAKC,IAAL,EAAV;AACA,YAAM,OAAKL,KAAL,CAAW,cAAX,EAA2BY,UAA3B,CAAsCR,KAAtC,CAAN;AACA,aAAO,OAAKF,OAAL,EAAP;AAHuB;AAIxB;;AAEKW,eAAN,GAAsB;AAAA;;AAAA;AACpB,UAAIT,QAAM,OAAKC,IAAL,EAAV;AACA,YAAM,OAAKL,KAAL,CAAW,cAAX,EAA2Bc,OAA3B,CAAmCV,KAAnC,CAAN;AACA,aAAO,OAAKF,OAAL,EAAP;AAHoB;AAIrB;AACKa,mBAAN,GAA0B;AAAA;;AAAA;AACxB,UAAIX,QAAM,OAAKC,IAAL,EAAV;AACA,YAAM,OAAKL,KAAL,CAAW,cAAX,EAA2BgB,WAA3B,CAAuCZ,KAAvC,CAAN;AACA,aAAO,OAAKF,OAAL,EAAP;AAHwB;AAIzB;AA3CiC,CAApC",
+    "file": "..\\..\\..\\..\\src\\wx\\controller\\admin\\wx_attribute.js",
+    "sourcesContent": [
+        "/**\n*属性\n*/\nconst Base = require('../../../admin/controller/base.js');\nmodule.exports = class extends Base {\n  async indexAction() {\n    return this.display();\n  }\n\n  async allDataAction() {\n    let data=await this.model('wx_attribute').allData()\n    return this.success(data);\n  }\n\n  async findListByPidAction() {\n    let param=this.post();\n    let data=await this.model('wx_attribute').findListByPid(param)\n    return this.success(data);\n  }\n  \n  async pageDataAction() {\n    let param=this.post();\n    let data=await this.model('wx_attribute').pageData(param);\n    return this.success(data);\n  }\n\n  async addDataAction() {\n    let param=this.post();\n    await this.model('wx_attribute').addData(param);\n    return this.success();\n  }\n\n  async updateDataAction() {\n    let param=this.post();\n    await this.model('wx_attribute').updateData(param);\n    return this.success();\n  }\n\n  async delDataAction() {\n    let param=this.post();\n    await this.model('wx_attribute').delData(param);\n    return this.success();\n  }\n  async delFlagDataAction() {\n    let param=this.post();\n    await this.model('wx_attribute').delFlagData(param);\n    return this.success();\n  }\n};"
+    ]
+}

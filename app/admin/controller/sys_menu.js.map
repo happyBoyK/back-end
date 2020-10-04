@@ -1,0 +1,46 @@
+{
+    "version": 3,
+    "sources": [
+        "..\\..\\..\\src\\admin\\controller\\sys_menu.js"
+    ],
+    "names": [
+        "Base",
+        "require",
+        "module",
+        "exports",
+        "indexAction",
+        "display",
+        "myMenuAction",
+        "model",
+        "getMyMenuData",
+        "userInfo",
+        "id",
+        "role_id",
+        "allDataAction",
+        "data",
+        "allData",
+        "success",
+        "addDataAction",
+        "param",
+        "post",
+        "addData",
+        "updateDataAction",
+        "updateData",
+        "delDataAction",
+        "delData",
+        "getMenuTreeAction",
+        "getMenuTree",
+        "getMenuTreeIdsAction",
+        "field",
+        "where",
+        "select",
+        "list",
+        "item",
+        "push"
+    ],
+    "mappings": ";;AAAA,MAAMA,OAAOC,QAAQ,WAAR,CAAb;;AAEAC,OAAOC,OAAP,GAAiB,cAAcH,IAAd,CAAmB;AAC5BI,aAAN,GAAoB;AAAA;;AAAA;AAClB,aAAO,MAAKC,OAAL,EAAP;AADkB;AAEnB;;AAEKC,cAAN,GAAqB;AAAA;;AAAA;AACnB,aAAO,MAAM,OAAKC,KAAL,CAAW,UAAX,EAAuBC,aAAvB,CAAqC,OAAKC,QAAL,GAAgBC,EAArD,EAAwD,OAAKD,QAAL,GAAgBE,OAAxE,CAAb;AADmB;AAEpB;;AAEKC,eAAN,GAAsB;AAAA;;AAAA;AACpB,UAAIC,OAAK,MAAM,OAAKN,KAAL,CAAW,UAAX,EAAuBO,OAAvB,EAAf;AACA,aAAO,OAAKC,OAAL,CAAaF,IAAb,CAAP;AAFoB;AAGrB;;AAEKG,eAAN,GAAsB;AAAA;;AAAA;AACpB,UAAIC,QAAM,OAAKC,IAAL,EAAV;AACA,YAAM,OAAKX,KAAL,CAAW,UAAX,EAAuBY,OAAvB,CAA+BF,KAA/B,CAAN;AACA,aAAO,OAAKF,OAAL,EAAP;AAHoB;AAIrB;;AAEKK,kBAAN,GAAyB;AAAA;;AAAA;AACvB,UAAIH,QAAM,OAAKC,IAAL,EAAV;AACA,YAAM,OAAKX,KAAL,CAAW,UAAX,EAAuBc,UAAvB,CAAkCJ,KAAlC,CAAN;AACA,aAAO,OAAKF,OAAL,EAAP;AAHuB;AAIxB;;AAEKO,eAAN,GAAsB;AAAA;;AAAA;AACpB,UAAIL,QAAM,OAAKC,IAAL,EAAV;AACA,YAAM,OAAKX,KAAL,CAAW,UAAX,EAAuBgB,OAAvB,CAA+BN,KAA/B,CAAN;AACA,aAAO,OAAKF,OAAL,EAAP;AAHoB;AAIrB;;AAEKS,mBAAN,GAA0B;AAAA;;AAAA;AACxB,UAAIX,OAAO,MAAM,OAAKN,KAAL,CAAW,UAAX,EAAuBkB,WAAvB,EAAjB;;AAEA,aAAO,OAAKV,OAAL,CAAaF,IAAb,CAAP;AAHwB;AAIzB;;AAEKa,sBAAN,GAA6B;AAAA;;AAAA;AAC3B,UAAIT,QAAQ,OAAKC,IAAL,EAAZ;AACA,UAAIL,OAAO,MAAM,OAAKN,KAAL,CAAW,eAAX,EAA4BoB,KAA5B,CAAkC,eAAlC,EAAmDC,KAAnD,CAAyD,EAACjB,SAASM,MAAMP,EAAhB,EAAzD,EAA8EmB,MAA9E,EAAjB;AACA,YAAMC,OAAO,EAAb;AACA,WAAK,MAAMC,IAAX,IAAmBlB,IAAnB,EAAyB;AACvBiB,aAAKE,IAAL,CAAUD,KAAKrB,EAAf;AACD;AACD,aAAO,OAAKK,OAAL,CAAae,IAAb,CAAP;AAP2B;AAQ5B;;AA9CiC,CAApC",
+    "file": "..\\..\\..\\src\\admin\\controller\\sys_menu.js",
+    "sourcesContent": [
+        "const Base = require('./base.js');\n\nmodule.exports = class extends Base {\n  async indexAction() {\n    return this.display();\n  }\n\n  async myMenuAction() {\n    return await this.model(\"sys_menu\").getMyMenuData(this.userInfo().id,this.userInfo().role_id);\n  }\n\n  async allDataAction() {\n    let data=await this.model(\"sys_menu\").allData();\n    return this.success(data);\n  }\n\n  async addDataAction() {\n    let param=this.post();\n    await this.model(\"sys_menu\").addData(param);\n    return this.success();\n  }\n\n  async updateDataAction() {\n    let param=this.post();\n    await this.model(\"sys_menu\").updateData(param);\n    return this.success();\n  }\n\n  async delDataAction() {\n    let param=this.post();\n    await this.model(\"sys_menu\").delData(param);\n    return this.success();\n  }\n\n  async getMenuTreeAction() {\n    let data = await this.model(\"sys_menu\").getMenuTree();\n\n    return this.success(data);\n  }\n\n  async getMenuTreeIdsAction() {\n    let param = this.post();\n    let data = await this.model('sys_role_menu').field('menu_id as id').where({role_id: param.id}).select();\n    const list = [];\n    for (const item of data) {\n      list.push(item.id);\n    }\n    return this.success(list);\n  }\n\n};\n"
+    ]
+}

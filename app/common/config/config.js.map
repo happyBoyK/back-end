@@ -1,0 +1,28 @@
+{
+    "version": 3,
+    "sources": [
+        "..\\..\\..\\src\\common\\config\\config.js"
+    ],
+    "names": [
+        "module",
+        "exports",
+        "workers",
+        "jwtsecret",
+        "qiniu_bucket",
+        "qiniu_ak",
+        "qiniu_sk",
+        "qiniu_key",
+        "generator_path",
+        "weixin",
+        "appid",
+        "secret",
+        "mch_id",
+        "partner_key",
+        "notify_url"
+    ],
+    "mappings": "AAAA;AACAA,OAAOC,OAAP,GAAiB;AACfC,WAAS,CADM;AAEfC,aAAW,cAFI;;AAIf;AACAC,gBAAa,qBALE;AAMfC,YAAS,0CANM;AAOfC,YAAS,0CAPM;AAQfC,aAAU,OARK;;AAUf;AACAC,kBAAe,uCAXA;;AAafC,UAAQ;AACNC,WAAO,oBADD,EACuB;AAC7BC,YAAQ,kCAFF,EAEsC;AAC5CC,YAAQ,EAHF,EAGM;AACZC,iBAAa,EAJP,EAIW;AACjBC,gBAAY,EALN,CAKS;AALT;AAbO,CAAjB",
+    "file": "..\\..\\..\\src\\common\\config\\config.js",
+    "sourcesContent": [
+        "// default config\nmodule.exports = {\n  workers: 1,\n  jwtsecret: \"ohmygod@2017\",\n\n  //七牛配置\n  qiniu_bucket:'thinkjs-iview-admin',\n  qiniu_ak:'-HJl3HU59lCkmusRoQVGj25QzQXsNCUtjXLmeVPE',\n  qiniu_sk:'vGFvf0suaL2D2alIgSE_Y13oJQgl3BCo7-qvAgzg',\n  qiniu_key:'ceshi',\n\n  //自动生成代码的路径\n  generator_path:'D:/thinkjs-iview-admin-generator-code',\n\n  weixin: {\n    appid: 'wx359607bb8878036f', // 小程序 appid\n    secret: '6a053a856ecb8fc54c32f55383209f11', // 小程序密钥\n    mch_id: '', // 商户帐号ID\n    partner_key: '', // 微信支付密钥\n    notify_url: '' // 微信异步通知，例：https://www.nideshop.com/api/pay/notify\n  }\n};\n"
+    ]
+}

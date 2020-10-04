@@ -1,0 +1,22 @@
+{
+    "version": 3,
+    "sources": [
+        "..\\..\\..\\src\\admin\\model\\generator.js"
+    ],
+    "names": [
+        "module",
+        "exports",
+        "think",
+        "Model",
+        "getTables",
+        "query",
+        "getTableComment",
+        "tablename",
+        "getColumns"
+    ],
+    "mappings": "AAAAA,OAAOC,OAAP,GAAiB,cAAcC,MAAMC,KAApB,CAA0B;;AAE1CC,aAAY;AACT,SAAO,KAAKC,KAAL,CAAW,8HAAX,CAAP;AACF;;AAEDC,iBAAgBC,SAAhB,EAA2B;AACxB,SAAO,KAAKF,KAAL,CAAW,mJAAiJE,SAAjJ,GAA2J,GAAtK,CAAP;AACF;;AAEDC,YAAWD,SAAX,EAAsB;AACnB,SAAO,KAAKF,KAAL,CAAW,yGAAuGE,SAAvG,GAAiH,GAA5H,CAAP;AACF;AAZyC,CAA3C",
+    "file": "..\\..\\..\\src\\admin\\model\\generator.js",
+    "sourcesContent": [
+        "module.exports = class extends think.Model {\n\n\tgetTables() {\n\t   return this.query('select table_name as name,table_comment as comment from INFORMATION_SCHEMA.tables where   table_schema = (select database())');\n\t}\n\n\tgetTableComment(tablename) {\n\t   return this.query(\"select table_name as name,table_comment as comment from INFORMATION_SCHEMA.tables where   table_schema = (select database()) and table_name ='\"+tablename+\"'\");\n\t}\n\n\tgetColumns(tablename) {\n\t   return this.query(\"select * from information_schema.columns where table_schema = (select database()) and table_name = '\"+tablename+\"'\");\n\t}\n};\n"
+    ]
+}

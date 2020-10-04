@@ -1,0 +1,38 @@
+{
+    "version": 3,
+    "sources": [
+        "..\\..\\..\\src\\common\\template\\controller.js"
+    ],
+    "names": [
+        "fs",
+        "require",
+        "common",
+        "_path",
+        "module",
+        "exports",
+        "do",
+        "time",
+        "param",
+        "data",
+        "mokuai",
+        "mokuainame",
+        "index",
+        "indexOf",
+        "targetDir",
+        "think",
+        "config",
+        "substring",
+        "length",
+        "mkdirs",
+        "file",
+        "tablename",
+        "template",
+        "tablecomment",
+        "writeFileSync"
+    ],
+    "mappings": "AAAA;;;;AAIA,MAAMA,KAAKC,QAAQ,IAAR,CAAX;AACA,MAAMC,SAASD,QAAQ,mBAAR,CAAf;AACA,MAAME,QAAM,gBAAZ;;AAEAC,OAAOC,OAAP,GAAkB;AAChBC,IAAGC,IAAH,EAAQC,KAAR,EAAcC,IAAd,EAAoB;AACnB;;;AAGA,MAAIC,SAAOF,MAAMG,UAAjB;AACA,MAAIC,QAAMF,OAAOG,OAAP,CAAe,GAAf,CAAV;AACA,MAAIC,YAAUC,MAAMC,MAAN,CAAa,gBAAb,IAA+B,GAA/B,GAAmCT,IAAnC,GAAwCJ,KAAxC,IAA+CS,QAAM,CAAN,GAAQF,MAAR,GAAeA,OAAOO,SAAP,CAAiB,CAAjB,EAAmBL,KAAnB,CAA9D,IAAyF,aAAzF,IAAwGA,QAAM,CAAN,GAAQ,EAAR,GAAWF,OAAOO,SAAP,CAAiBL,KAAjB,EAAuBF,OAAOQ,MAA9B,CAAnH,CAAd;AACAhB,SAAOiB,MAAP,CAAcL,SAAd;AACA,MAAIM,OAAKN,YAAU,GAAV,GAAcN,MAAMa,SAApB,GAA8B,KAAvC;AACF,MAAIC,WACH,YACE,GADF,GACMd,MAAMe,YADZ,GACyB,MADzB,GAEE,QAFF,GAGA,gEAHA,GAIA,2CAJA,GAKA,6BALA,GAMA,gCANA,GAOA,SAPA,GAQA,MARA,GASA,+BATA,GAUA,iCAVA,GAUkCf,MAAMa,SAVxC,GAUkD,kBAVlD,GAWA,oCAXA,GAYA,SAZA,GAaA,MAbA,GAcA,gCAdA,GAeA,gCAfA,GAgBA,iCAhBA,GAgBkCb,MAAMa,SAhBxC,GAgBkD,yBAhBlD,GAiBA,oCAjBA,GAkBA,SAlBA,GAmBA,MAnBA,GAoBA,+BApBA,GAqBA,gCArBA,GAsBA,wBAtBA,GAsByBb,MAAMa,SAtB/B,GAsByC,wBAtBzC,GAuBA,gCAvBA,GAwBA,SAxBA,GAyBA,MAzBA,GA0BA,kCA1BA,GA2BA,gCA3BA,GA4BA,wBA5BA,GA4ByBb,MAAMa,SA5B/B,GA4ByC,2BA5BzC,GA6BA,gCA7BA,GA8BA,SA9BA,GA+BA,MA/BA,GAgCA,+BAhCA,GAiCA,gCAjCA,GAkCA,wBAlCA,GAkCyBb,MAAMa,SAlC/B,GAkCyC,wBAlCzC,GAmCA,gCAnCA,GAoCA,SApCA,GAqCA,mCArCA,GAsCA,gCAtCA,GAuCA,wBAvCA,GAuCyBb,MAAMa,SAvC/B,GAuCyC,4BAvCzC,GAwCA,gCAxCA,GAyCA,SAzCA,GA0CA,IA3CD;AA4CArB,KAAGwB,aAAH,CAAiBJ,IAAjB,EAAsBE,QAAtB;AACE;AAvDe,CAAlB",
+    "file": "..\\..\\..\\src\\common\\template\\controller.js",
+    "sourcesContent": [
+        "/**\n * 自动生成代码：controller模版\n * 2018年1月17日 \n */\nconst fs = require('fs');\nconst common = require('../util/common.js');\nconst _path='/back-end/src/';\n\nmodule.exports =  {\n  do(time,param,data) {\n  \t/**\n  \t*创建目录\n  \t*/\n  \tlet mokuai=param.mokuainame;\n  \tlet index=mokuai.indexOf('/');\n  \tlet targetDir=think.config('generator_path')+'/'+time+_path+(index<0?mokuai:mokuai.substring(0,index))+'/controller'+(index<0?'':mokuai.substring(index,mokuai.length));\n  \tcommon.mkdirs(targetDir);\n  \tlet file=targetDir+'/'+param.tablename+'.js';\n\tlet template=\n\t\t\"/**\\r\\n\"+\n\t  \t\"*\"+param.tablecomment+\"\\r\\n\"+\n\t  \t\"*/\\r\\n\"+\n\t\t\"const Base = require('../../../admin/controller/base.js');\\r\\n\"+\n\t\t\"module.exports = class extends Base {\\r\\n\"+\n\t\t\"  async indexAction() {\\r\\n\"+\n\t\t\"    return this.display();\\r\\n\"+\n\t\t\"  }\\r\\n\"+\n\t\t\"\\r\\n\"+\n\t\t\"  async allDataAction() {\\r\\n\"+\n\t\t\"    let data=await this.model('\"+param.tablename+\"').allData()\\r\\n\"+\n\t\t\"    return this.success(data);\\r\\n\"+\n\t\t\"  }\\r\\n\"+\n\t\t\"\\r\\n\"+\n\t\t\"  async pageDataAction() {\\r\\n\"+\n\t\t\"    let param=this.post();\\r\\n\"+\n\t\t\"    let data=await this.model('\"+param.tablename+\"').pageData(param);\\r\\n\"+\n\t\t\"    return this.success(data);\\r\\n\"+\n\t\t\"  }\\r\\n\"+\n\t\t\"\\r\\n\"+\n\t\t\"  async addDataAction() {\\r\\n\"+\n\t\t\"    let param=this.post();\\r\\n\"+\n\t\t\"    await this.model('\"+param.tablename+\"').addData(param);\\r\\n\"+\n\t\t\"    return this.success();\\r\\n\"+\n\t\t\"  }\\r\\n\"+\n\t\t\"\\r\\n\"+\n\t\t\"  async updateDataAction() {\\r\\n\"+\n\t\t\"    let param=this.post();\\r\\n\"+\n\t\t\"    await this.model('\"+param.tablename+\"').updateData(param);\\r\\n\"+\n\t\t\"    return this.success();\\r\\n\"+\n\t\t\"  }\\r\\n\"+\n\t\t\"\\r\\n\"+\n\t\t\"  async delDataAction() {\\r\\n\"+\n\t\t\"    let param=this.post();\\r\\n\"+\n\t\t\"    await this.model('\"+param.tablename+\"').delData(param);\\r\\n\"+\n\t\t\"    return this.success();\\r\\n\"+\n\t\t\"  }\\r\\n\"+\n\t\t\"  async delFlagDataAction() {\\r\\n\"+\n\t\t\"    let param=this.post();\\r\\n\"+\n\t\t\"    await this.model('\"+param.tablename+\"').delFlagData(param);\\r\\n\"+\n\t\t\"    return this.success();\\r\\n\"+\n\t\t\"  }\\r\\n\"+\n\t\t\"};\";\n\tfs.writeFileSync(file,template);\n  }\n};\n"
+    ]
+}

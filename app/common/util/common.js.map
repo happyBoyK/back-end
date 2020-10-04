@@ -1,0 +1,23 @@
+{
+    "version": 3,
+    "sources": [
+        "..\\..\\..\\src\\common\\util\\common.js"
+    ],
+    "names": [
+        "fs",
+        "require",
+        "path",
+        "module",
+        "exports",
+        "mkdirs",
+        "dirname",
+        "mkdirsSync",
+        "existsSync",
+        "mkdirSync"
+    ],
+    "mappings": "AAAA;;;AAGA,MAAMA,KAAKC,QAAQ,IAAR,CAAX;AACA,MAAMC,OAAOD,QAAQ,MAAR,CAAb;;AAEAE,OAAOC,OAAP,GAAkB;AACfC,WAAOC,OAAP,EAAgB;AACd,eAAOC,WAAWD,OAAX,CAAP;AACA;AAHa,CAAlB;;AAOA,SAASC,UAAT,CAAoBD,OAApB,EAA6B;AACzB,QAAIN,GAAGQ,UAAH,CAAcF,OAAd,CAAJ,EAA4B;AACxB,eAAO,IAAP;AACH,KAFD,MAEO;AACN,YAAIC,WAAWL,KAAKI,OAAL,CAAaA,OAAb,CAAX,CAAJ,EAAuC;AACnCN,eAAGS,SAAH,CAAaH,OAAb;AACA,mBAAO,IAAP;AACA;AACJ;AACJ",
+    "file": "..\\..\\..\\src\\common\\util\\common.js",
+    "sourcesContent": [
+        "/**\n *常用工具类\n */\nconst fs = require('fs');\nconst path = require('path');\n\nmodule.exports =  {\n  \tmkdirs(dirname) {    \n\t    return mkdirsSync(dirname);\n    }  \n};\n\n\nfunction mkdirsSync(dirname) {    \n    if (fs.existsSync(dirname)) {  \n        return true;  \n    } else {  \n    \tif (mkdirsSync(path.dirname(dirname))) {  \n        \tfs.mkdirSync(dirname);  \n        \treturn true;  \n        }\n    }  \n} "
+    ]
+}

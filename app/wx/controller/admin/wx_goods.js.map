@@ -1,0 +1,38 @@
+{
+    "version": 3,
+    "sources": [
+        "..\\..\\..\\..\\src\\wx\\controller\\admin\\wx_goods.js"
+    ],
+    "names": [
+        "Base",
+        "require",
+        "module",
+        "exports",
+        "indexAction",
+        "display",
+        "allDataAction",
+        "data",
+        "model",
+        "allData",
+        "success",
+        "pageDataAction",
+        "param",
+        "post",
+        "pageData",
+        "addDataAction",
+        "addData",
+        "updateDataAction",
+        "updateData",
+        "delDataAction",
+        "delData",
+        "delFlagDataAction",
+        "delFlagData",
+        "changeStatusAction",
+        "changeStatus"
+    ],
+    "mappings": ";;AAAA;;;AAGA,MAAMA,OAAOC,QAAQ,mCAAR,CAAb;AACAC,OAAOC,OAAP,GAAiB,cAAcH,IAAd,CAAmB;AAC5BI,aAAN,GAAoB;AAAA;;AAAA;AAClB,aAAO,MAAKC,OAAL,EAAP;AADkB;AAEnB;;AAEKC,eAAN,GAAsB;AAAA;;AAAA;AACpB,UAAIC,OAAK,MAAM,OAAKC,KAAL,CAAW,UAAX,EAAuBC,OAAvB,EAAf;AACA,aAAO,OAAKC,OAAL,CAAaH,IAAb,CAAP;AAFoB;AAGrB;;AAEKI,gBAAN,GAAuB;AAAA;;AAAA;AACrB,UAAIC,QAAM,OAAKC,IAAL,EAAV;AACA,UAAIN,OAAK,MAAM,OAAKC,KAAL,CAAW,UAAX,EAAuBM,QAAvB,CAAgCF,KAAhC,CAAf;AACA,aAAO,OAAKF,OAAL,CAAaH,IAAb,CAAP;AAHqB;AAItB;;AAEKQ,eAAN,GAAsB;AAAA;;AAAA;AACpB,UAAIH,QAAM,OAAKC,IAAL,EAAV;AACA,YAAM,OAAKL,KAAL,CAAW,UAAX,EAAuBQ,OAAvB,CAA+BJ,KAA/B,CAAN;AACA,aAAO,OAAKF,OAAL,EAAP;AAHoB;AAIrB;;AAEKO,kBAAN,GAAyB;AAAA;;AAAA;AACvB,UAAIL,QAAM,OAAKC,IAAL,EAAV;AACA,YAAM,OAAKL,KAAL,CAAW,UAAX,EAAuBU,UAAvB,CAAkCN,KAAlC,CAAN;AACA,aAAO,OAAKF,OAAL,EAAP;AAHuB;AAIxB;;AAEKS,eAAN,GAAsB;AAAA;;AAAA;AACpB,UAAIP,QAAM,OAAKC,IAAL,EAAV;AACA,YAAM,OAAKL,KAAL,CAAW,UAAX,EAAuBY,OAAvB,CAA+BR,KAA/B,CAAN;AACA,aAAO,OAAKF,OAAL,EAAP;AAHoB;AAIrB;AACKW,mBAAN,GAA0B;AAAA;;AAAA;AACxB,UAAIT,QAAM,OAAKC,IAAL,EAAV;AACA,YAAM,OAAKL,KAAL,CAAW,UAAX,EAAuBc,WAAvB,CAAmCV,KAAnC,CAAN;AACA,aAAO,OAAKF,OAAL,EAAP;AAHwB;AAIzB;;AAEKa,oBAAN,GAA2B;AAAA;;AAAA;AACzB,UAAIX,QAAM,OAAKC,IAAL,EAAV;AACA,YAAM,OAAKL,KAAL,CAAW,UAAX,EAAuBgB,YAAvB,CAAoCZ,KAApC,CAAN;AACA,aAAO,OAAKF,OAAL,EAAP;AAHyB;AAI1B;AA3CiC,CAApC",
+    "file": "..\\..\\..\\..\\src\\wx\\controller\\admin\\wx_goods.js",
+    "sourcesContent": [
+        "/**\n*商品\n*/\nconst Base = require('../../../admin/controller/base.js');\nmodule.exports = class extends Base {\n  async indexAction() {\n    return this.display();\n  }\n\n  async allDataAction() {\n    let data=await this.model('wx_goods').allData()\n    return this.success(data);\n  }\n\n  async pageDataAction() {\n    let param=this.post();\n    let data=await this.model('wx_goods').pageData(param);\n    return this.success(data);\n  }\n\n  async addDataAction() {\n    let param=this.post();\n    await this.model('wx_goods').addData(param);\n    return this.success();\n  }\n\n  async updateDataAction() {\n    let param=this.post();\n    await this.model('wx_goods').updateData(param);\n    return this.success();\n  }\n\n  async delDataAction() {\n    let param=this.post();\n    await this.model('wx_goods').delData(param);\n    return this.success();\n  }\n  async delFlagDataAction() {\n    let param=this.post();\n    await this.model('wx_goods').delFlagData(param);\n    return this.success();\n  }\n\n  async changeStatusAction() {\n    let param=this.post();\n    await this.model(\"wx_goods\").changeStatus(param);\n    return this.success();\n  }\n};"
+    ]
+}

@@ -1,0 +1,37 @@
+{
+    "version": 3,
+    "sources": [
+        "..\\..\\..\\src\\admin\\controller\\common.js"
+    ],
+    "names": [
+        "Base",
+        "require",
+        "qiniu",
+        "accessKey",
+        "think",
+        "config",
+        "secretKey",
+        "bucket",
+        "key",
+        "module",
+        "exports",
+        "indexAction",
+        "success",
+        "uploadTokenAction",
+        "mac",
+        "auth",
+        "digest",
+        "Mac",
+        "options",
+        "scope",
+        "putPolicy",
+        "rs",
+        "PutPolicy",
+        "uploadToken"
+    ],
+    "mappings": ";;AAAA,MAAMA,OAAOC,QAAQ,WAAR,CAAb;AACA,MAAMC,QAAQD,QAAQ,OAAR,CAAd;AACA,MAAME,YAAUC,MAAMC,MAAN,CAAa,UAAb,CAAhB;AACA,MAAMC,YAAUF,MAAMC,MAAN,CAAa,UAAb,CAAhB;AACA,MAAME,SAAOH,MAAMC,MAAN,CAAa,cAAb,CAAb;AACA,MAAMG,MAAIJ,MAAMC,MAAN,CAAa,WAAb,CAAV;;AAEAI,OAAOC,OAAP,GAAiB,cAAcV,IAAd,CAAmB;AAC7BW,aAAN,GAAoB;AAAA;;AAAA;AAChB,aAAO,MAAKC,OAAL,EAAP;AADgB;AAEjB;;AAEDC,sBAAoB;AACnB,UAAMC,MAAM,IAAIZ,MAAMa,IAAN,CAAWC,MAAX,CAAkBC,GAAtB,CAA0Bd,SAA1B,EAAqCG,SAArC,CAAZ;AACC,UAAMY,UAAU;AACdC,aAAOZ,MADO,CACA;AADA,KAAhB;AAGA,UAAMa,YAAY,IAAIlB,MAAMmB,EAAN,CAASC,SAAb,CAAuBJ,OAAvB,CAAlB;AACA,UAAMK,cAAcH,UAAUG,WAAV,CAAsBT,GAAtB,CAApB;AACA,WAAO,KAAKF,OAAL,CAAa,EAAC,SAAQW,WAAT,EAAb,CAAP;AACD;AAbgC,CAApC",
+    "file": "..\\..\\..\\src\\admin\\controller\\common.js",
+    "sourcesContent": [
+        "const Base = require('./base.js');\nconst qiniu = require('qiniu');\nconst accessKey=think.config('qiniu_ak')\nconst secretKey=think.config('qiniu_sk')\nconst bucket=think.config('qiniu_bucket');\nconst key=think.config('qiniu_key');\n\nmodule.exports = class extends Base {\n\tasync indexAction() {\n    \treturn this.success();\n  \t}\n\n  \tuploadTokenAction() {\n  \t\tconst mac = new qiniu.auth.digest.Mac(accessKey, secretKey);\n\t    const options = {\n\t      scope: bucket //+ ':'+key\n\t    };\n\t    const putPolicy = new qiniu.rs.PutPolicy(options);\n   \t\tconst uploadToken = putPolicy.uploadToken(mac);\n\t    return this.success({'token':uploadToken});\n  \t}\n};\n"
+    ]
+}

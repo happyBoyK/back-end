@@ -1,0 +1,28 @@
+{
+    "version": 3,
+    "sources": [
+        "..\\..\\..\\src\\admin\\controller\\tea.js"
+    ],
+    "names": [
+        "Base",
+        "require",
+        "module",
+        "exports",
+        "constructor",
+        "catDb",
+        "model",
+        "catListAction",
+        "think",
+        "logger",
+        "info",
+        "list",
+        "field",
+        "select",
+        "success"
+    ],
+    "mappings": ";;AAAA,MAAMA,OAAOC,QAAQ,WAAR,CAAb;;AAEAC,OAAOC,OAAP,GAAiB,cAAcH,IAAd,CAAmB;AAClCI,gBAAc;AACZ,SAAKC,KAAL,GAAa,KAAKC,KAAL,CAAW,cAAX,CAAb;AACD;AACKC,eAAN,GAAsB;AAAA;;AAAA;AACpBC,YAAMC,MAAN,CAAaC,IAAb,CAAkB,MAAlB;AACA,YAAMC,OAAO,MAAM,MAAKN,KAAL,CAAWO,KAAX,CAAiB,UAAjB,EAA6BC,MAA7B,EAAnB;AACA,aAAO,MAAKC,OAAL,CAAaH,IAAb,CAAP;AAHoB;AAIrB;AARiC,CAApC",
+    "file": "..\\..\\..\\src\\admin\\controller\\tea.js",
+    "sourcesContent": [
+        "const Base = require('./base.js');\n\nmodule.exports = class extends Base {\n  constructor() {\n    this.catDb = this.model('yxd_seat_cat');\n  }\n  async catListAction() {\n    think.logger.info('请求分类');\n    const list = await this.catDb.field('id, name').select();\n    return this.success(list);\n  }\n};\n"
+    ]
+}

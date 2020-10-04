@@ -1,0 +1,25 @@
+{
+    "version": 3,
+    "sources": [
+        "..\\..\\..\\src\\admin\\controller\\index.js"
+    ],
+    "names": [
+        "Base",
+        "require",
+        "module",
+        "exports",
+        "indexAction",
+        "sys_user",
+        "model",
+        "where",
+        "id",
+        "name1",
+        "find",
+        "success"
+    ],
+    "mappings": ";;AAAA,MAAMA,OAAOC,QAAQ,WAAR,CAAb;;AAEAC,OAAOC,OAAP,GAAiB,cAAcH,IAAd,CAAmB;AAC5BI,aAAN,GAAoB;AAAA;;AAAA;AAClB;AACA,YAAMC,WAAS,MAAKC,KAAL,CAAW,UAAX,CAAf;AACAD,eAASE,KAAT,CAAe,EAACC,IAAG,CAAJ,EAAf;AACAH,eAASE,KAAT,CAAe,EAACE,OAAM,CAAP,EAAf;AACA,YAAMJ,SAASK,IAAT,EAAN;AACA,aAAO,MAAKC,OAAL,CAAa,EAAC,MAAK,CAAN,EAAb,CAAP;AANkB;AAOnB;AARiC,CAApC",
+    "file": "..\\..\\..\\src\\admin\\controller\\index.js",
+    "sourcesContent": [
+        "const Base = require('./base.js');\n\nmodule.exports = class extends Base {\n  async indexAction() {\n    // return this.display();\n    const sys_user=this.model('sys_user');\n    sys_user.where({id:1});\n    sys_user.where({name1:1});\n    await sys_user.find();\n    return this.success({\"id\":2});\n  }\n};\n"
+    ]
+}

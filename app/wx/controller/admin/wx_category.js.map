@@ -1,0 +1,38 @@
+{
+    "version": 3,
+    "sources": [
+        "..\\..\\..\\..\\src\\wx\\controller\\admin\\wx_category.js"
+    ],
+    "names": [
+        "Base",
+        "require",
+        "module",
+        "exports",
+        "indexAction",
+        "display",
+        "allDataAction",
+        "data",
+        "model",
+        "allData",
+        "success",
+        "pageDataAction",
+        "param",
+        "post",
+        "pageData",
+        "categoryListAction",
+        "categoryList",
+        "addDataAction",
+        "addData",
+        "updateDataAction",
+        "updateData",
+        "delDataAction",
+        "delData",
+        "delFlagDataAction",
+        "delFlagData"
+    ],
+    "mappings": ";;AAAA;;;AAGA,MAAMA,OAAOC,QAAQ,mCAAR,CAAb;AACAC,OAAOC,OAAP,GAAiB,cAAcH,IAAd,CAAmB;;AAE5BI,aAAN,GAAoB;AAAA;;AAAA;AAClB,aAAO,MAAKC,OAAL,EAAP;AADkB;AAEnB;;AAEKC,eAAN,GAAsB;AAAA;;AAAA;AACpB,UAAIC,OAAK,MAAM,OAAKC,KAAL,CAAW,aAAX,EAA0BC,OAA1B,EAAf;AACA,aAAO,OAAKC,OAAL,CAAaH,IAAb,CAAP;AAFoB;AAGrB;;AAEKI,gBAAN,GAAuB;AAAA;;AAAA;AACrB,UAAIC,QAAM,OAAKC,IAAL,EAAV;AACA,UAAIN,OAAK,MAAM,OAAKC,KAAL,CAAW,aAAX,EAA0BM,QAA1B,CAAmCF,KAAnC,CAAf;AACA,aAAO,OAAKF,OAAL,CAAaH,IAAb,CAAP;AAHqB;AAItB;;AAEKQ,oBAAN,GAA2B;AAAA;;AAAA;AACzB,UAAIR,OAAK,MAAM,OAAKC,KAAL,CAAW,aAAX,EAA0BQ,YAA1B,EAAf;AACA,aAAO,OAAKN,OAAL,CAAaH,IAAb,CAAP;AAFyB;AAG1B;;AAEKU,eAAN,GAAsB;AAAA;;AAAA;AACpB,UAAIL,QAAM,OAAKC,IAAL,EAAV;AACA,YAAM,OAAKL,KAAL,CAAW,aAAX,EAA0BU,OAA1B,CAAkCN,KAAlC,CAAN;AACA,aAAO,OAAKF,OAAL,EAAP;AAHoB;AAIrB;;AAEKS,kBAAN,GAAyB;AAAA;;AAAA;AACvB,UAAIP,QAAM,OAAKC,IAAL,EAAV;AACA,YAAM,OAAKL,KAAL,CAAW,aAAX,EAA0BY,UAA1B,CAAqCR,KAArC,CAAN;AACA,aAAO,OAAKF,OAAL,EAAP;AAHuB;AAIxB;;AAEKW,eAAN,GAAsB;AAAA;;AAAA;AACpB,UAAIT,QAAM,OAAKC,IAAL,EAAV;AACA,YAAM,OAAKL,KAAL,CAAW,aAAX,EAA0Bc,OAA1B,CAAkCV,KAAlC,CAAN;AACA,aAAO,OAAKF,OAAL,EAAP;AAHoB;AAIrB;AACKa,mBAAN,GAA0B;AAAA;;AAAA;AACxB,UAAIX,QAAM,OAAKC,IAAL,EAAV;AACA,YAAM,OAAKL,KAAL,CAAW,aAAX,EAA0BgB,WAA1B,CAAsCZ,KAAtC,CAAN;AACA,aAAO,OAAKF,OAAL,EAAP;AAHwB;AAIzB;AA3CiC,CAApC",
+    "file": "..\\..\\..\\..\\src\\wx\\controller\\admin\\wx_category.js",
+    "sourcesContent": [
+        "/**\n*分类\n*/\nconst Base = require('../../../admin/controller/base.js');\nmodule.exports = class extends Base {\n  \n  async indexAction() {\n    return this.display();\n  }\n\n  async allDataAction() {\n    let data=await this.model('wx_category').allData()\n    return this.success(data);\n  }\n\n  async pageDataAction() {\n    let param=this.post();\n    let data=await this.model('wx_category').pageData(param);\n    return this.success(data);\n  }\n\n  async categoryListAction() {\n    let data=await this.model('wx_category').categoryList()\n    return this.success(data);\n  }\n\n  async addDataAction() {\n    let param=this.post();\n    await this.model('wx_category').addData(param);\n    return this.success();\n  }\n\n  async updateDataAction() {\n    let param=this.post();\n    await this.model('wx_category').updateData(param);\n    return this.success();\n  }\n\n  async delDataAction() {\n    let param=this.post();\n    await this.model('wx_category').delData(param);\n    return this.success();\n  }\n  async delFlagDataAction() {\n    let param=this.post();\n    await this.model('wx_category').delFlagData(param);\n    return this.success();\n  }\n};"
+    ]
+}

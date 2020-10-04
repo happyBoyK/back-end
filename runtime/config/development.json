@@ -1,0 +1,367 @@
+{
+  "admin": {
+    "port": 8360,
+    "workers": 1,
+    "stickyCluster": false,
+    "startServerTimeout": 3000,
+    "reloadSignal": "SIGUSR2",
+    "processKillTimeout": 10000,
+    "jsonpCallbackField": "callback",
+    "jsonContentType": "application/json",
+    "jsonpContentType": "application/javascript",
+    "errnoField": "errno",
+    "errmsgField": "errmsg",
+    "defaultErrno": 1000,
+    "validateDefaultErrno": 1001,
+    "jwtsecret": "ohmygod@2017",
+    "qiniu_bucket": "thinkjs-iview-admin",
+    "qiniu_ak": "-HJl3HU59lCkmusRoQVGj25QzQXsNCUtjXLmeVPE",
+    "qiniu_sk": "vGFvf0suaL2D2alIgSE_Y13oJQgl3BCo7-qvAgzg",
+    "qiniu_key": "ceshi",
+    "generator_path": "D:/thinkjs-iview-admin-generator-code",
+    "weixin": {
+      "appid": "wx359607bb8878036f",
+      "secret": "6a053a856ecb8fc54c32f55383209f11",
+      "mch_id": "",
+      "partner_key": "",
+      "notify_url": ""
+    },
+    "cache": {
+      "type": "file",
+      "file": {
+        "timeout": 86400000,
+        "cachePath": "D:\\project\\thinkjs-iview-admin\\back-end\\runtime\\cache",
+        "pathDepth": 1,
+        "gcInterval": 86400000
+      }
+    },
+    "model": {
+      "type": "mysql",
+      "mysql": {
+        "logConnect": false,
+        "logSql": true,
+        "database": "shujuku",
+        "prefix": "",
+        "encoding": "utf8",
+        "host": "localhost",
+        "port": "3306",
+        "user": "shujuku",
+        "password": "shujuku",
+        "dateStrings": true
+      }
+    },
+    "session": {
+      "type": "file",
+      "file": {
+        "cookie": {
+          "name": "thinkjs"
+        },
+        "sessionPath": "D:\\project\\thinkjs-iview-admin\\back-end\\runtime\\session"
+      }
+    },
+    "view": {
+      "type": "nunjucks",
+      "nunjucks": {
+        "viewPath": "D:\\project\\thinkjs-iview-admin\\back-end\\view",
+        "sep": "_",
+        "extname": ".html"
+      }
+    },
+    "logger": {
+      "type": "console",
+      "console": {},
+      "file": {
+        "backups": 10,
+        "absolute": true,
+        "maxLogSize": 51200,
+        "filename": "D:\\project\\thinkjs-iview-admin\\back-end\\logs\\app.log"
+      },
+      "dateFile": {
+        "level": "ALL",
+        "absolute": true,
+        "pattern": "-yyyy-MM-dd",
+        "alwaysIncludePattern": true,
+        "filename": "D:\\project\\thinkjs-iview-admin\\back-end\\logs\\app.log"
+      }
+    }
+  },
+  "common": {
+    "port": 8360,
+    "workers": 1,
+    "stickyCluster": false,
+    "startServerTimeout": 3000,
+    "reloadSignal": "SIGUSR2",
+    "processKillTimeout": 10000,
+    "jsonpCallbackField": "callback",
+    "jsonContentType": "application/json",
+    "jsonpContentType": "application/javascript",
+    "errnoField": "errno",
+    "errmsgField": "errmsg",
+    "defaultErrno": 1000,
+    "validateDefaultErrno": 1001,
+    "jwtsecret": "ohmygod@2017",
+    "qiniu_bucket": "thinkjs-iview-admin",
+    "qiniu_ak": "-HJl3HU59lCkmusRoQVGj25QzQXsNCUtjXLmeVPE",
+    "qiniu_sk": "vGFvf0suaL2D2alIgSE_Y13oJQgl3BCo7-qvAgzg",
+    "qiniu_key": "ceshi",
+    "generator_path": "D:/thinkjs-iview-admin-generator-code",
+    "weixin": {
+      "appid": "wx359607bb8878036f",
+      "secret": "6a053a856ecb8fc54c32f55383209f11",
+      "mch_id": "",
+      "partner_key": "",
+      "notify_url": ""
+    },
+    "cache": {
+      "type": "file",
+      "file": {
+        "timeout": 86400000,
+        "cachePath": "D:\\project\\thinkjs-iview-admin\\back-end\\runtime\\cache",
+        "pathDepth": 1,
+        "gcInterval": 86400000
+      }
+    },
+    "model": {
+      "type": "mysql",
+      "mysql": {
+        "logConnect": false,
+        "logSql": true,
+        "database": "shujuku",
+        "prefix": "",
+        "encoding": "utf8",
+        "host": "localhost",
+        "port": "3306",
+        "user": "shujuku",
+        "password": "shujuku",
+        "dateStrings": true
+      }
+    },
+    "session": {
+      "type": "file",
+      "file": {
+        "cookie": {
+          "name": "thinkjs"
+        },
+        "sessionPath": "D:\\project\\thinkjs-iview-admin\\back-end\\runtime\\session"
+      }
+    },
+    "view": {
+      "type": "nunjucks",
+      "nunjucks": {
+        "viewPath": "D:\\project\\thinkjs-iview-admin\\back-end\\view",
+        "sep": "_",
+        "extname": ".html"
+      }
+    },
+    "logger": {
+      "type": "console",
+      "console": {},
+      "file": {
+        "backups": 10,
+        "absolute": true,
+        "maxLogSize": 51200,
+        "filename": "D:\\project\\thinkjs-iview-admin\\back-end\\logs\\app.log"
+      },
+      "dateFile": {
+        "level": "ALL",
+        "absolute": true,
+        "pattern": "-yyyy-MM-dd",
+        "alwaysIncludePattern": true,
+        "filename": "D:\\project\\thinkjs-iview-admin\\back-end\\logs\\app.log"
+      }
+    }
+  },
+  "home": {
+    "port": 8360,
+    "workers": 1,
+    "stickyCluster": false,
+    "startServerTimeout": 3000,
+    "reloadSignal": "SIGUSR2",
+    "processKillTimeout": 10000,
+    "jsonpCallbackField": "callback",
+    "jsonContentType": "application/json",
+    "jsonpContentType": "application/javascript",
+    "errnoField": "errno",
+    "errmsgField": "errmsg",
+    "defaultErrno": 1000,
+    "validateDefaultErrno": 1001,
+    "jwtsecret": "ohmygod@2017",
+    "qiniu_bucket": "thinkjs-iview-admin",
+    "qiniu_ak": "-HJl3HU59lCkmusRoQVGj25QzQXsNCUtjXLmeVPE",
+    "qiniu_sk": "vGFvf0suaL2D2alIgSE_Y13oJQgl3BCo7-qvAgzg",
+    "qiniu_key": "ceshi",
+    "generator_path": "D:/thinkjs-iview-admin-generator-code",
+    "weixin": {
+      "appid": "wx359607bb8878036f",
+      "secret": "6a053a856ecb8fc54c32f55383209f11",
+      "mch_id": "",
+      "partner_key": "",
+      "notify_url": ""
+    },
+    "cache": {
+      "type": "file",
+      "file": {
+        "timeout": 86400000,
+        "cachePath": "D:\\project\\thinkjs-iview-admin\\back-end\\runtime\\cache",
+        "pathDepth": 1,
+        "gcInterval": 86400000
+      }
+    },
+    "model": {
+      "type": "mysql",
+      "mysql": {
+        "logConnect": false,
+        "logSql": true,
+        "database": "shujuku",
+        "prefix": "",
+        "encoding": "utf8",
+        "host": "localhost",
+        "port": "3306",
+        "user": "shujuku",
+        "password": "shujuku",
+        "dateStrings": true
+      }
+    },
+    "session": {
+      "type": "file",
+      "file": {
+        "cookie": {
+          "name": "thinkjs"
+        },
+        "sessionPath": "D:\\project\\thinkjs-iview-admin\\back-end\\runtime\\session"
+      }
+    },
+    "view": {
+      "type": "nunjucks",
+      "nunjucks": {
+        "viewPath": "D:\\project\\thinkjs-iview-admin\\back-end\\view",
+        "sep": "_",
+        "extname": ".html"
+      }
+    },
+    "logger": {
+      "type": "console",
+      "console": {},
+      "file": {
+        "backups": 10,
+        "absolute": true,
+        "maxLogSize": 51200,
+        "filename": "D:\\project\\thinkjs-iview-admin\\back-end\\logs\\app.log"
+      },
+      "dateFile": {
+        "level": "ALL",
+        "absolute": true,
+        "pattern": "-yyyy-MM-dd",
+        "alwaysIncludePattern": true,
+        "filename": "D:\\project\\thinkjs-iview-admin\\back-end\\logs\\app.log"
+      }
+    }
+  },
+  "wx": {
+    "port": 8360,
+    "workers": 1,
+    "stickyCluster": false,
+    "startServerTimeout": 3000,
+    "reloadSignal": "SIGUSR2",
+    "processKillTimeout": 10000,
+    "jsonpCallbackField": "callback",
+    "jsonContentType": "application/json",
+    "jsonpContentType": "application/javascript",
+    "errnoField": "errno",
+    "errmsgField": "errmsg",
+    "defaultErrno": 1000,
+    "validateDefaultErrno": 1001,
+    "jwtsecret": "ohmygod@2017",
+    "qiniu_bucket": "thinkjs-iview-admin",
+    "qiniu_ak": "-HJl3HU59lCkmusRoQVGj25QzQXsNCUtjXLmeVPE",
+    "qiniu_sk": "vGFvf0suaL2D2alIgSE_Y13oJQgl3BCo7-qvAgzg",
+    "qiniu_key": "ceshi",
+    "generator_path": "D:/thinkjs-iview-admin-generator-code",
+    "weixin": {
+      "appid": "wx359607bb8878036f",
+      "secret": "6a053a856ecb8fc54c32f55383209f11",
+      "mch_id": "",
+      "partner_key": "",
+      "notify_url": ""
+    },
+    "publicController": [
+      "api/index",
+      "api/catalog",
+      "api/topic",
+      "api/auth",
+      "api/goods",
+      "api/brand",
+      "api/search",
+      "api/region"
+    ],
+    "publicAction": [
+      "api/comment/list",
+      "api/comment/count",
+      "api/cart/index",
+      "api/cart/add",
+      "api/cart/checked",
+      "api/cart/update",
+      "api/cart/delete",
+      "api/cart/goodscount",
+      "api/pay/notify"
+    ],
+    "cache": {
+      "type": "file",
+      "file": {
+        "timeout": 86400000,
+        "cachePath": "D:\\project\\thinkjs-iview-admin\\back-end\\runtime\\cache",
+        "pathDepth": 1,
+        "gcInterval": 86400000
+      }
+    },
+    "model": {
+      "type": "mysql",
+      "mysql": {
+        "logConnect": false,
+        "logSql": true,
+        "database": "shujuku",
+        "prefix": "",
+        "encoding": "utf8",
+        "host": "localhost",
+        "port": "3306",
+        "user": "shujuku",
+        "password": "shujuku",
+        "dateStrings": true
+      }
+    },
+    "session": {
+      "type": "file",
+      "file": {
+        "cookie": {
+          "name": "thinkjs"
+        },
+        "sessionPath": "D:\\project\\thinkjs-iview-admin\\back-end\\runtime\\session"
+      }
+    },
+    "view": {
+      "type": "nunjucks",
+      "nunjucks": {
+        "viewPath": "D:\\project\\thinkjs-iview-admin\\back-end\\view",
+        "sep": "_",
+        "extname": ".html"
+      }
+    },
+    "logger": {
+      "type": "console",
+      "console": {},
+      "file": {
+        "backups": 10,
+        "absolute": true,
+        "maxLogSize": 51200,
+        "filename": "D:\\project\\thinkjs-iview-admin\\back-end\\logs\\app.log"
+      },
+      "dateFile": {
+        "level": "ALL",
+        "absolute": true,
+        "pattern": "-yyyy-MM-dd",
+        "alwaysIncludePattern": true,
+        "filename": "D:\\project\\thinkjs-iview-admin\\back-end\\logs\\app.log"
+      }
+    }
+  }
+}

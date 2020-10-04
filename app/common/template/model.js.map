@@ -1,0 +1,41 @@
+{
+    "version": 3,
+    "sources": [
+        "..\\..\\..\\src\\common\\template\\model.js"
+    ],
+    "names": [
+        "fs",
+        "require",
+        "common",
+        "_path",
+        "module",
+        "exports",
+        "do",
+        "time",
+        "param",
+        "data",
+        "mokuai",
+        "mokuainame",
+        "index",
+        "indexOf",
+        "targetDir",
+        "think",
+        "config",
+        "substring",
+        "mkdirs",
+        "file",
+        "tablename",
+        "template",
+        "tablecomment",
+        "p",
+        "parameter",
+        "is_search",
+        "name",
+        "writeFileSync"
+    ],
+    "mappings": "AAAA;;;;AAIA,MAAMA,KAAKC,QAAQ,IAAR,CAAX;AACA,MAAMC,SAASD,QAAQ,mBAAR,CAAf;AACA,MAAME,QAAM,gBAAZ;;AAEAC,OAAOC,OAAP,GAAkB;AAChBC,KAAGC,IAAH,EAAQC,KAAR,EAAcC,IAAd,EAAoB;AACnB;;;AAGC,QAAIC,SAAOF,MAAMG,UAAjB;AACA,QAAIC,QAAMF,OAAOG,OAAP,CAAe,GAAf,CAAV;AACD,QAAIC,YAAUC,MAAMC,MAAN,CAAa,gBAAb,IAA+B,GAA/B,GAAmCT,IAAnC,GAAwCJ,KAAxC,IAA+CS,QAAM,CAAN,GAAQF,MAAR,GAAeA,OAAOO,SAAP,CAAiB,CAAjB,EAAmBL,KAAnB,CAA9D,IAAyF,QAAvG;AACAV,WAAOgB,MAAP,CAAcJ,SAAd;AACA,QAAIK,OAAKL,YAAU,GAAV,GAAcN,MAAMY,SAApB,GAA8B,KAAvC;AACA,QAAIC,WACD,YACA,GADA,GACIb,MAAMc,YADV,GACuB,MADvB,GAEA,QAFA,GAGF,mBAHE,GAIA,kDAJA,GAKA,MALA,GAMA,6BANA,GAOA,6CAPA,GAQA,2BARA,GASA,oCATA,GAUA,gCAVA,GAWA,SAXA,GAYA,MAZA,GAaA,6BAbA,GAcA,mDAdA,GAeA,SAfA,GAgBA,MAhBA,GAiBA,iCAjBA,GAkBA,0BAlBA,GAmBA,sFAnBA,GAoBA,SApBA,GAqBA,MArBA,GAsBA,gCAtBA,GAuBA,0BAvBA,GAwBA,6CAxBA,GAyBA,0BAzBA,GA0BA,mCA1BA,GA2BA,kDA3BA,GA4BA,SA5BA,GA6BA,MA7BA,GA8BA,8BA9BA,GA+BA,yFAhCH;AAiCG,SAAI,IAAIC,CAAR,IAAaf,MAAMgB,SAAnB,EAA6B;AAC3B,UAAGD,EAAEE,SAAF,IAAa,CAAhB,EAAkB;AAChBJ,oBACA,iCAA+BE,EAAEG,IAAjC,GAAsC,SAAtC,GACA,uBADA,GACwBH,EAAEG,IAD1B,GAC+B,sBAD/B,GACsDH,EAAEG,IADxD,GAC6D,cAD7D,GAEA,WAHA;AAID;AACF;AACDL,gBACA,gDACA,sBADA,GAEA,SAFA,GAGA,MAHA,GAIA,6BAJA,GAKA,2DALA,GAMA,sBANA,GAOA,SAPA,GAQA,MARA,GASA,0BATA,GAUA,8DAVA,GAWA,SAXA,GAYA,IAbA;AAcHrB,OAAG2B,aAAH,CAAiBR,IAAjB,EAAsBE,QAAtB;AACA;AAlEe,CAAlB",
+    "file": "..\\..\\..\\src\\common\\template\\model.js",
+    "sourcesContent": [
+        "/**\n * 自动生成代码：model模版\n * 2018年1月17日 \n */\nconst fs = require('fs');\nconst common = require('../util/common.js');\nconst _path='/back-end/src/';\n\nmodule.exports =  {\n  do(time,param,data) {\n  \t/*\n  \t创建目录\n  \t */\n    let mokuai=param.mokuainame;\n    let index=mokuai.indexOf('/');\n  \tlet targetDir=think.config('generator_path')+'/'+time+_path+(index<0?mokuai:mokuai.substring(0,index))+'/model';\n  \tcommon.mkdirs(targetDir);\n  \tlet file=targetDir+'/'+param.tablename+'.js';\n  \tlet template=\n      \"/**\\r\\n\"+\n      \"*\"+param.tablecomment+\"\\r\\n\"+\n      \"*/\\r\\n\"+\n  \t\t\"'use strict';\\r\\n\"+\n      \"module.exports = class extends think.Model {\\r\\n\"+\n      \"\\r\\n\"+\n      \"  async addData(param){\\r\\n\"+\n      \"    param.create_date=think.datetime();\\r\\n\"+\n      \"    param.del_flag=0;\\r\\n\"+\n      \"    param.id=think.uuid('v1');\\r\\n\"+\n      \"    await this.add(param);\\r\\n\"+\n      \"  }\\r\\n\"+\n      \"\\r\\n\"+\n      \"  async delData(param){\\r\\n\"+\n      \"    await this.where({id:param.id}).delete();\\r\\n\"+\n      \"  }\\r\\n\"+\n      \"\\r\\n\"+\n      \"  async delFlagData(param){\\r\\n\"+\n      \"    let id=param.id;\\r\\n\"+\n      \"    await this.where({id:id}).update({update_date:think.datetime(),del_flag:1});\\r\\n\"+\n      \"  }\\r\\n\"+\n      \"\\r\\n\"+\n      \"  async updateData(param){\\r\\n\"+\n      \"    let id=param.id;\\r\\n\"+\n      \"    param.update_date=think.datetime();\\r\\n\"+\n      \"    delete param.id;\\r\\n\"+\n      \"    delete param.create_date;\\r\\n\"+\n      \"    await this.where({id:id}).update(param);\\r\\n\"+\n      \"  }\\r\\n\"+\n      \"\\r\\n\"+\n      \"  async pageData(param){\\r\\n\"+\n      \"    let sql=this.page(param.current).where({del_flag:0}).order('create_date desc');\\r\\n\";\n      for(let p of param.parameter){\n        if(p.is_search==1){\n          template+=\n          \"    if(!think.isEmpty(param.\"+p.name+\")){\\r\\n\"+\n          \"      sql=sql.where({\"+p.name+\":['like', '%'+param.\"+p.name+\"+'%']});\\r\\n\"+\n          \"    }\\r\\n\";\n        }\n      }\n      template+=\n      \"    let data = await sql.countSelect();\\r\\n\"+\n      \"    return data;\\r\\n\"+\n      \"  }\\r\\n\"+\n      \"\\r\\n\"+\n      \"  async allData(param){\\r\\n\"+\n      \"    let data=await this.where({del_flag:0}).select();\\r\\n\"+\n      \"    return data;\\r\\n\"+\n      \"  }\\r\\n\"+\n      \"\\r\\n\"+\n      \"  async getData(id){\\r\\n\"+\n      \"    return await this.where({id: id,del_flag:0}).find();\\r\\n\"+\n      \"  }\\r\\n\"+\n      \"};\";\n  \tfs.writeFileSync(file,template);\n  }\n};\n"
+    ]
+}

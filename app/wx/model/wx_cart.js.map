@@ -1,0 +1,29 @@
+{
+    "version": 3,
+    "sources": [
+        "..\\..\\..\\src\\wx\\model\\wx_cart.js"
+    ],
+    "names": [
+        "module",
+        "exports",
+        "think",
+        "Model",
+        "getGoodsList",
+        "goodsList",
+        "where",
+        "user_id",
+        "userId",
+        "session_id",
+        "select",
+        "getCheckedGoodsList",
+        "checked",
+        "clearBuyGoods",
+        "$res",
+        "delete"
+    ],
+    "mappings": ";;AAAAA,OAAOC,OAAP,GAAiB,cAAcC,MAAMC,KAApB,CAA0B;AACzC;;;;AAIMC,cAAN,GAAqB;AAAA;;AAAA;AACnB,YAAMC,YAAY,MAAM,MAAKC,KAAL,CAAW,EAACC,SAASL,MAAMM,MAAhB,EAAwBC,YAAY,CAApC,EAAX,EAAmDC,MAAnD,EAAxB;AACA,aAAOL,SAAP;AAFmB;AAGpB;;AAED;;;;AAIMM,qBAAN,GAA4B;AAAA;;AAAA;AAC1B,YAAMN,YAAY,MAAM,OAAKC,KAAL,CAAW,EAACC,SAASL,MAAMM,MAAhB,EAAwBC,YAAY,CAApC,EAAuCG,SAAS,CAAhD,EAAX,EAA+DF,MAA/D,EAAxB;AACA,aAAOL,SAAP;AAF0B;AAG3B;;AAED;;;;AAIMQ,eAAN,GAAsB;AAAA;;AAAA;AACpB,YAAMC,OAAO,MAAM,OAAKR,KAAL,CAAW,EAACC,SAASL,MAAMM,MAAhB,EAAwBC,YAAY,CAApC,EAAuCG,SAAS,CAAhD,EAAX,EAA+DG,MAA/D,EAAnB;AACA,aAAOD,IAAP;AAFoB;AAGrB;AA1BwC,CAA3C",
+    "file": "..\\..\\..\\src\\wx\\model\\wx_cart.js",
+    "sourcesContent": [
+        "module.exports = class extends think.Model {\n  /**\n   * 获取购物车的商品\n   * @returns {Promise.<*>}\n   */\n  async getGoodsList() {\n    const goodsList = await this.where({user_id: think.userId, session_id: 1}).select();\n    return goodsList;\n  }\n\n  /**\n   * 获取购物车的选中的商品\n   * @returns {Promise.<*>}\n   */\n  async getCheckedGoodsList() {\n    const goodsList = await this.where({user_id: think.userId, session_id: 1, checked: 1}).select();\n    return goodsList;\n  }\n\n  /**\n   * 清空已购买的商品\n   * @returns {Promise.<*>}\n   */\n  async clearBuyGoods() {\n    const $res = await this.where({user_id: think.userId, session_id: 1, checked: 1}).delete();\n    return $res;\n  }\n};\n"
+    ]
+}

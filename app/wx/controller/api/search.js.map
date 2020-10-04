@@ -1,0 +1,40 @@
+{
+    "version": 3,
+    "sources": [
+        "..\\..\\..\\..\\src\\wx\\controller\\api\\search.js"
+    ],
+    "names": [
+        "Base",
+        "require",
+        "module",
+        "exports",
+        "indexAction",
+        "defaultKeyword",
+        "model",
+        "where",
+        "is_default",
+        "limit",
+        "find",
+        "hotKeywordList",
+        "distinct",
+        "field",
+        "select",
+        "historyKeywordList",
+        "user_id",
+        "think",
+        "userId",
+        "getField",
+        "success",
+        "helperAction",
+        "keyword",
+        "get",
+        "keywords",
+        "clearhistoryAction",
+        "delete"
+    ],
+    "mappings": ";;AAAA,MAAMA,OAAOC,QAAQ,WAAR,CAAb;;AAEAC,OAAOC,OAAP,GAAiB,cAAcH,IAAd,CAAmB;AAC5BI,aAAN,GAAoB;AAAA;;AAAA;AAClB;AACA,YAAMC,iBAAiB,MAAM,MAAKC,KAAL,CAAW,aAAX,EAA0BC,KAA1B,CAAgC,EAAEC,YAAY,CAAd,EAAhC,EAAmDC,KAAnD,CAAyD,CAAzD,EAA4DC,IAA5D,EAA7B;AACA;AACA,YAAMC,iBAAiB,MAAM,MAAKL,KAAL,CAAW,aAAX,EAA0BM,QAA1B,CAAmC,SAAnC,EAA8CC,KAA9C,CAAoD,CAAC,SAAD,EAAY,QAAZ,CAApD,EAA2EJ,KAA3E,CAAiF,EAAjF,EAAqFK,MAArF,EAA7B;AACA,YAAMC,qBAAqB,MAAM,MAAKT,KAAL,CAAW,mBAAX,EAAgCM,QAAhC,CAAyC,SAAzC,EAAoDL,KAApD,CAA0D,EAAES,SAASC,MAAMC,MAAjB,EAA1D,EAAqFT,KAArF,CAA2F,EAA3F,EAA+FU,QAA/F,CAAwG,SAAxG,CAAjC;;AAEA,aAAO,MAAKC,OAAL,CAAa;AAClBf,wBAAgBA,cADE;AAElBU,4BAAoBA,kBAFF;AAGlBJ,wBAAgBA;AAHE,OAAb,CAAP;AAPkB;AAYnB;;AAEKU,cAAN,GAAqB;AAAA;;AAAA;AACnB,YAAMC,UAAU,OAAKC,GAAL,CAAS,SAAT,CAAhB;AACA,YAAMC,WAAW,MAAM,OAAKlB,KAAL,CAAW,aAAX,EAA0BM,QAA1B,CAAmC,SAAnC,EAA8CL,KAA9C,CAAoD,EAAEe,SAAS,CAAC,MAAD,EAASA,UAAU,GAAnB,CAAX,EAApD,EAA0FH,QAA1F,CAAmG,SAAnG,EAA8G,EAA9G,CAAvB;AACA,aAAO,OAAKC,OAAL,CAAaI,QAAb,CAAP;AAHmB;AAIpB;;AAEKC,oBAAN,GAA2B;AAAA;;AAAA;AACzB,YAAM,OAAKnB,KAAL,CAAW,mBAAX,EAAgCC,KAAhC,CAAsC,EAAES,SAASC,MAAMC,MAAjB,EAAtC,EAAiEQ,MAAjE,EAAN;AACA,aAAO,OAAKN,OAAL,EAAP;AAFyB;AAG1B;AAxBiC,CAApC",
+    "file": "..\\..\\..\\..\\src\\wx\\controller\\api\\search.js",
+    "sourcesContent": [
+        "const Base = require('./base.js');\n\nmodule.exports = class extends Base {\n  async indexAction() {\n    // 取出输入框默认的关键词\n    const defaultKeyword = await this.model('wx_keywords').where({ is_default: 1 }).limit(1).find();\n    // 取出热闹关键词\n    const hotKeywordList = await this.model('wx_keywords').distinct('keyword').field(['keyword', 'is_hot']).limit(10).select();\n    const historyKeywordList = await this.model('wx_search_history').distinct('keyword').where({ user_id: think.userId }).limit(10).getField('keyword');\n\n    return this.success({\n      defaultKeyword: defaultKeyword,\n      historyKeywordList: historyKeywordList,\n      hotKeywordList: hotKeywordList\n    });\n  }\n\n  async helperAction() {\n    const keyword = this.get('keyword');\n    const keywords = await this.model('wx_keywords').distinct('keyword').where({ keyword: ['like', keyword + '%'] }).getField('keyword', 10);\n    return this.success(keywords);\n  }\n\n  async clearhistoryAction() {\n    await this.model('wx_search_history').where({ user_id: think.userId }).delete();\n    return this.success();\n  }\n};\n"
+    ]
+}

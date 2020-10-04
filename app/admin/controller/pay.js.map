@@ -1,0 +1,23 @@
+{
+    "version": 3,
+    "sources": [
+        "..\\..\\..\\src\\admin\\controller\\pay.js"
+    ],
+    "names": [
+        "think",
+        "require",
+        "Base",
+        "module",
+        "exports",
+        "payTypeListAction",
+        "list",
+        "model",
+        "select",
+        "success"
+    ],
+    "mappings": ";;AAAA,MAAM,EAAEA,KAAF,KAAYC,QAAQ,SAAR,CAAlB;AACA,MAAMC,OAAOD,QAAQ,WAAR,CAAb;;AAEAE,OAAOC,OAAP,GAAiB,cAAcF,IAAd,CAAmB;AAC5BG,mBAAN,GAA0B;AAAA;;AAAA;AACxB,YAAMC,OAAO,MAAM,MAAKC,KAAL,CAAW,cAAX,EAA2BC,MAA3B,EAAnB;AACA,aAAO,MAAKC,OAAL,CAAaH,IAAb,CAAP;AAFwB;AAGzB;AAJiC,CAApC",
+    "file": "..\\..\\..\\src\\admin\\controller\\pay.js",
+    "sourcesContent": [
+        "const { think } = require('thinkjs');\r\nconst Base = require('./base.js');\r\n\r\nmodule.exports = class extends Base {\r\n  async payTypeListAction() {\r\n    const list = await this.model('yxd_pay_type').select();\r\n    return this.success(list);\r\n  }\r\n}"
+    ]
+}

@@ -1,0 +1,36 @@
+{
+    "version": 3,
+    "sources": [
+        "..\\..\\..\\..\\src\\wx\\controller\\admin\\wx_specification.js"
+    ],
+    "names": [
+        "Base",
+        "require",
+        "module",
+        "exports",
+        "indexAction",
+        "display",
+        "allDataAction",
+        "data",
+        "model",
+        "allData",
+        "success",
+        "pageDataAction",
+        "param",
+        "post",
+        "pageData",
+        "addDataAction",
+        "addData",
+        "updateDataAction",
+        "updateData",
+        "delDataAction",
+        "delData",
+        "delFlagDataAction",
+        "delFlagData"
+    ],
+    "mappings": ";;AAAA;;;AAGA,MAAMA,OAAOC,QAAQ,mCAAR,CAAb;AACAC,OAAOC,OAAP,GAAiB,cAAcH,IAAd,CAAmB;AAC5BI,aAAN,GAAoB;AAAA;;AAAA;AAClB,aAAO,MAAKC,OAAL,EAAP;AADkB;AAEnB;;AAEKC,eAAN,GAAsB;AAAA;;AAAA;AACpB,UAAIC,OAAK,MAAM,OAAKC,KAAL,CAAW,kBAAX,EAA+BC,OAA/B,EAAf;AACA,aAAO,OAAKC,OAAL,CAAaH,IAAb,CAAP;AAFoB;AAGrB;;AAEKI,gBAAN,GAAuB;AAAA;;AAAA;AACrB,UAAIC,QAAM,OAAKC,IAAL,EAAV;AACA,UAAIN,OAAK,MAAM,OAAKC,KAAL,CAAW,kBAAX,EAA+BM,QAA/B,CAAwCF,KAAxC,CAAf;AACA,aAAO,OAAKF,OAAL,CAAaH,IAAb,CAAP;AAHqB;AAItB;;AAEKQ,eAAN,GAAsB;AAAA;;AAAA;AACpB,UAAIH,QAAM,OAAKC,IAAL,EAAV;AACA,YAAM,OAAKL,KAAL,CAAW,kBAAX,EAA+BQ,OAA/B,CAAuCJ,KAAvC,CAAN;AACA,aAAO,OAAKF,OAAL,EAAP;AAHoB;AAIrB;;AAEKO,kBAAN,GAAyB;AAAA;;AAAA;AACvB,UAAIL,QAAM,OAAKC,IAAL,EAAV;AACA,YAAM,OAAKL,KAAL,CAAW,kBAAX,EAA+BU,UAA/B,CAA0CN,KAA1C,CAAN;AACA,aAAO,OAAKF,OAAL,EAAP;AAHuB;AAIxB;;AAEKS,eAAN,GAAsB;AAAA;;AAAA;AACpB,UAAIP,QAAM,OAAKC,IAAL,EAAV;AACA,YAAM,OAAKL,KAAL,CAAW,kBAAX,EAA+BY,OAA/B,CAAuCR,KAAvC,CAAN;AACA,aAAO,OAAKF,OAAL,EAAP;AAHoB;AAIrB;AACKW,mBAAN,GAA0B;AAAA;;AAAA;AACxB,UAAIT,QAAM,OAAKC,IAAL,EAAV;AACA,YAAM,OAAKL,KAAL,CAAW,kBAAX,EAA+Bc,WAA/B,CAA2CV,KAA3C,CAAN;AACA,aAAO,OAAKF,OAAL,EAAP;AAHwB;AAIzB;AArCiC,CAApC",
+    "file": "..\\..\\..\\..\\src\\wx\\controller\\admin\\wx_specification.js",
+    "sourcesContent": [
+        "/**\n*规格\n*/\nconst Base = require('../../../admin/controller/base.js');\nmodule.exports = class extends Base {\n  async indexAction() {\n    return this.display();\n  }\n\n  async allDataAction() {\n    let data=await this.model('wx_specification').allData()\n    return this.success(data);\n  }\n\n  async pageDataAction() {\n    let param=this.post();\n    let data=await this.model('wx_specification').pageData(param);\n    return this.success(data);\n  }\n\n  async addDataAction() {\n    let param=this.post();\n    await this.model('wx_specification').addData(param);\n    return this.success();\n  }\n\n  async updateDataAction() {\n    let param=this.post();\n    await this.model('wx_specification').updateData(param);\n    return this.success();\n  }\n\n  async delDataAction() {\n    let param=this.post();\n    await this.model('wx_specification').delData(param);\n    return this.success();\n  }\n  async delFlagDataAction() {\n    let param=this.post();\n    await this.model('wx_specification').delFlagData(param);\n    return this.success();\n  }\n};"
+    ]
+}

@@ -1,0 +1,51 @@
+{
+    "version": 3,
+    "sources": [
+        "..\\..\\..\\src\\common\\middleware\\paramMid.js"
+    ],
+    "names": [
+        "think",
+        "require",
+        "defaultOptions",
+        "consoleExecTime",
+        "errmsgOptions",
+        "module",
+        "exports",
+        "options",
+        "Object",
+        "assign",
+        "ctx",
+        "next",
+        "logger",
+        "info",
+        "href",
+        "param",
+        "post",
+        "startTime",
+        "Date",
+        "now",
+        "err",
+        "catch",
+        "e",
+        "error",
+        "then",
+        "status",
+        "body",
+        "errno",
+        "response",
+        "isEmpty",
+        "errmsg",
+        "data",
+        "endTime",
+        "JSON",
+        "stringify",
+        "Promise",
+        "reject",
+        "Error"
+    ],
+    "mappings": "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",
+    "file": "..\\..\\..\\src\\common\\middleware\\paramMid.js",
+    "sourcesContent": [
+        "const { think } = require(\"thinkjs\");\n\n// 是否打印执行时间的配置\nconst defaultOptions = {\n  consoleExecTime: true \n}\n\n// 错误代码的文字说明配置\nconst errmsgOptions = {\n  9999 : '系统异常,如有疑问请联系管理员！',\n  9998 : '未登录，不允许操作！',\n  9997 : '登陆验证失败，请重新登陆！',\n  9996 : '帐号或者密码不正确！',\n  9995 : '该用户名已被使用！',\n  9994 : '原密码不正确！',\n  9993 : 'HTTP请求方式不正确！',\n  401  : '请先登录',\n  404  : '请求的URL不存在！'\n}\n\nmodule.exports = (options = {}) => {\n  // 合并传递进来的配置\n  options = Object.assign({}, defaultOptions, options,errmsgOptions);\n  return (ctx, next) => {\n    if(!options.consoleExecTime) {\n      return next(); // 如果不需要打印执行时间，直接调用后续执行逻辑\n    }\n    think.logger.info('--------------新请求开始----------------');\n    think.logger.info('请求href:',ctx.href);\n    think.logger.info('请求GET参数:',ctx.param());\n    think.logger.info('请求POST参数:',ctx.post());\n    const startTime = Date.now();\n    let err = null;\n    // 调用 next 统计后续执行逻辑的所有时间\n    return next().catch(e => {\n      think.logger.error('系统异常:',e);\n      err = e; // 这里先将错误保存在一个错误对象上，方便统计出错情况下的执行时间\n    }).then(() => {   \n      const status=ctx.status;\n      if(status!=200){ \n        ctx.body={};\n        ctx.body.errno=status;\n      }\n      if(ctx.response&&!ctx.body){\n        ctx.body={};\n        ctx.body.errno='9999'\n      }\n      if(ctx.body.errno&&ctx.body.errno!=0){\n        if(!think.isEmpty(ctx.body.errmsg)||!think.isEmpty(ctx.body.data)){\n          if(think.isEmpty(ctx.body.errmsg)){\n            ctx.body.errmsg=ctx.body.data;\n          }else{\n            ctx.body.errmsg=ctx.body.errmsg;\n          }\n        }else{\n          if(think.isEmpty(options[ctx.body.errno])){\n            ctx.body.errmsg='未知异常！';\n          }else{\n            ctx.body.errmsg=options[ctx.body.errno];\n          }     \n        }   \n      }\n      const endTime = Date.now();\n      if(status==200){\n        think.logger.info('返回状态:',status,',返回结果:',JSON.stringify(ctx.body));\n      }else{\n        think.logger.error('返回状态:',status,',返回结果:',JSON.stringify(ctx.body));\n      }\n      \n      think.logger.info('请求处理时间:',(endTime - startTime),'ms');\n      think.logger.info('--------------新请求结束----------------');\n      if(err||status!=200){\n        return Promise.reject(new Error(err)); // 如果后续执行逻辑有错误，则将错误返回\n      }\n    })\n  }\n}"
+    ]
+}

@@ -1,0 +1,38 @@
+{
+    "version": 3,
+    "sources": [
+        "..\\..\\..\\src\\common\\template\\logic.js"
+    ],
+    "names": [
+        "fs",
+        "require",
+        "common",
+        "_path",
+        "module",
+        "exports",
+        "do",
+        "time",
+        "param",
+        "data",
+        "mokuai",
+        "mokuainame",
+        "index",
+        "indexOf",
+        "targetDir",
+        "think",
+        "config",
+        "substring",
+        "length",
+        "mkdirs",
+        "file",
+        "tablename",
+        "template",
+        "tablecomment",
+        "writeFileSync"
+    ],
+    "mappings": "AAAA;;;;AAIA,MAAMA,KAAKC,QAAQ,IAAR,CAAX;AACA,MAAMC,SAASD,QAAQ,mBAAR,CAAf;AACA,MAAME,QAAM,gBAAZ;;AAEAC,OAAOC,OAAP,GAAkB;AAChBC,KAAGC,IAAH,EAAQC,KAAR,EAAcC,IAAd,EAAoB;AACnB;;;AAGC,QAAIC,SAAOF,MAAMG,UAAjB;AACA,QAAIC,QAAMF,OAAOG,OAAP,CAAe,GAAf,CAAV;AACD,QAAIC,YAAUC,MAAMC,MAAN,CAAa,gBAAb,IAA+B,GAA/B,GAAmCT,IAAnC,GAAwCJ,KAAxC,IAA+CS,QAAM,CAAN,GAAQF,MAAR,GAAeA,OAAOO,SAAP,CAAiB,CAAjB,EAAmBL,KAAnB,CAA9D,IAAyF,QAAzF,IAAmGA,QAAM,CAAN,GAAQ,EAAR,GAAWF,OAAOO,SAAP,CAAiBL,KAAjB,EAAuBF,OAAOQ,MAA9B,CAA9G,CAAd;AACAhB,WAAOiB,MAAP,CAAcL,SAAd;AACA,QAAIM,OAAKN,YAAU,GAAV,GAAcN,MAAMa,SAApB,GAA8B,KAAvC;AACA,QAAIC,WACH,YACA,GADA,GACId,MAAMe,YADV,GACuB,MADvB,GAEA,QAFA,GAGF,kDAHE,GAIF,uBAJE,GAKF,SALE,GAMF,IAPC;AAQFvB,OAAGwB,aAAH,CAAiBJ,IAAjB,EAAsBE,QAAtB;AACE;AAnBe,CAAlB",
+    "file": "..\\..\\..\\src\\common\\template\\logic.js",
+    "sourcesContent": [
+        "/**\n * 自动生成代码：logic模版\n * 2018年1月17日 \n */\nconst fs = require('fs');\nconst common = require('../util/common.js');\nconst _path='/back-end/src/';\n\nmodule.exports =  {\n  do(time,param,data) {\n  \t/*\n  \t创建目录\n  \t */\n    let mokuai=param.mokuainame;\n    let index=mokuai.indexOf('/');\n  \tlet targetDir=think.config('generator_path')+'/'+time+_path+(index<0?mokuai:mokuai.substring(0,index))+'/logic'+(index<0?'':mokuai.substring(index,mokuai.length));\n  \tcommon.mkdirs(targetDir);\n  \tlet file=targetDir+'/'+param.tablename+'.js';\n\t  let template=\n    \"/**\\r\\n\"+\n    \"*\"+param.tablecomment+\"\\r\\n\"+\n    \"*/\\r\\n\"+\n\t\t\"module.exports = class extends think.Logic {\\r\\n\"+\n\t\t\"  indexAction() {\\r\\n\"+\n\t\t\"  }\\r\\n\"+\n\t\t\"};\";\n\tfs.writeFileSync(file,template);\n  }\n};\n"
+    ]
+}

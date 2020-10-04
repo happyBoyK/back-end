@@ -1,0 +1,48 @@
+{
+    "version": 3,
+    "sources": [
+        "..\\..\\..\\src\\admin\\controller\\generator.js"
+    ],
+    "names": [
+        "Base",
+        "require",
+        "controllerTem",
+        "logicTem",
+        "modelTem",
+        "viewTem",
+        "module",
+        "exports",
+        "indexAction",
+        "display",
+        "getTablesAction",
+        "data",
+        "model",
+        "getTables",
+        "success",
+        "getColumnsAction",
+        "param",
+        "post",
+        "getColumns",
+        "tablename",
+        "_data",
+        "item",
+        "push",
+        "name",
+        "comment",
+        "is_show",
+        "is_search",
+        "todoCodeAction",
+        "time",
+        "think",
+        "datetime",
+        "Date",
+        "do",
+        "msg",
+        "config"
+    ],
+    "mappings": ";;AAAA,MAAMA,OAAOC,QAAQ,WAAR,CAAb;AACA,MAAMC,gBAAgBD,QAAQ,qCAAR,CAAtB;AACA,MAAME,WAAWF,QAAQ,gCAAR,CAAjB;AACA,MAAMG,WAAWH,QAAQ,gCAAR,CAAjB;AACA,MAAMI,UAAUJ,QAAQ,+BAAR,CAAhB;;AAEAK,OAAOC,OAAP,GAAiB,cAAcP,IAAd,CAAmB;AAC5BQ,aAAN,GAAoB;AAAA;;AAAA;AAClB,aAAO,MAAKC,OAAL,EAAP;AADkB;AAEnB;;AAEKC,iBAAN,GAAwB;AAAA;;AAAA;AACtB,UAAIC,OAAK,MAAM,OAAKC,KAAL,CAAW,WAAX,EAAwBC,SAAxB,EAAf;AACA,aAAO,OAAKC,OAAL,CAAaH,IAAb,CAAP;AAFsB;AAGvB;;AAGKI,kBAAN,GAAyB;AAAA;;AAAA;AACxB,UAAIC,QAAM,OAAKC,IAAL,EAAV;AACC,UAAIN,OAAK,MAAM,OAAKC,KAAL,CAAW,WAAX,EAAwBM,UAAxB,CAAmCF,MAAMG,SAAzC,CAAf;AACA,UAAIC,QAAM,EAAV;AACA,WAAI,MAAMC,IAAV,IAAkBV,IAAlB,EAAuB;AACtBS,cAAME,IAAN,CAAW;AACVC,gBAAKF,KAAK,aAAL,CADK;AAEVG,mBAAQH,KAAK,gBAAL,CAFE;AAGVI,mBAAQ,CAHE;AAIVC,qBAAU;AAJA,SAAX;AAMA;AACD,aAAO,OAAKZ,OAAL,CAAaM,KAAb,CAAP;AAZuB;AAaxB;;AAEKO,gBAAN,GAAuB;AAAA;;AAAA;AACtB,UAAIX,QAAM,OAAKC,IAAL,EAAV;AACC,UAAIN,OAAK,MAAM,OAAKC,KAAL,CAAW,WAAX,EAAwBM,UAAxB,CAAmCF,MAAMG,SAAzC,CAAf;AACA,UAAIS,OAAKC,MAAMC,QAAN,CAAe,IAAIC,IAAJ,EAAf,EAA2B,gBAA3B,CAAT;AACA7B,oBAAc8B,EAAd,CAAiBJ,IAAjB,EAAsBZ,KAAtB,EAA4BL,IAA5B;AACAR,eAAS6B,EAAT,CAAYJ,IAAZ,EAAiBZ,KAAjB,EAAuBL,IAAvB;AACAP,eAAS4B,EAAT,CAAYJ,IAAZ,EAAiBZ,KAAjB,EAAuBL,IAAvB;AACAN,cAAQ2B,EAAR,CAAWJ,IAAX,EAAgBZ,KAAhB,EAAsBL,IAAtB;AACA,aAAO,OAAKG,OAAL,CAAa,EAACmB,KAAI,gBAAcJ,MAAMK,MAAN,CAAa,gBAAb,CAAd,GAA6C,GAA7C,GAAiDN,IAAtD,EAAb,CAAP;AARqB;AAStB;;AAnCiC,CAApC",
+    "file": "..\\..\\..\\src\\admin\\controller\\generator.js",
+    "sourcesContent": [
+        "const Base = require('./base.js');\nconst controllerTem = require('../../common/template/controller.js');\nconst logicTem = require('../../common/template/logic.js');\nconst modelTem = require('../../common/template/model.js');\nconst viewTem = require('../../common/template/view.js');\n\nmodule.exports = class extends Base {\n  async indexAction() {\n    return this.display();\n  }\n\n  async getTablesAction() {\n    let data=await this.model('generator').getTables();\n    return this.success(data);\n  }\n\n\n  async getColumnsAction() {\n  \tlet param=this.post();\n    let data=await this.model('generator').getColumns(param.tablename);\n    let _data=[];\n    for(const item of data){\n    \t_data.push({\n    \t\tname:item['COLUMN_NAME'],\n    \t\tcomment:item['COLUMN_COMMENT'],\n    \t\tis_show:0,\n    \t\tis_search:0,\n    \t});\n    }\n    return this.success(_data);\n  }\n\n  async todoCodeAction() {\n  \tlet param=this.post();\n    let data=await this.model('generator').getColumns(param.tablename);\n    let time=think.datetime(new Date(), 'YYYYMMDDHHmmss');\n    controllerTem.do(time,param,data);\n    logicTem.do(time,param,data);\n    modelTem.do(time,param,data);\n    viewTem.do(time,param,data);\n    return this.success({msg:'代码生成成功！目录为：'+think.config('generator_path')+'/'+time});\n  }\n\n}"
+    ]
+}

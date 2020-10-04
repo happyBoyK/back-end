@@ -1,0 +1,18 @@
+{
+    "version": 3,
+    "sources": [
+        "..\\..\\..\\..\\src\\wx\\logic\\admin\\wx_goods_gallery.js"
+    ],
+    "names": [
+        "module",
+        "exports",
+        "think",
+        "Logic",
+        "indexAction"
+    ],
+    "mappings": "AAAA;;;AAGAA,OAAOC,OAAP,GAAiB,cAAcC,MAAMC,KAApB,CAA0B;AACzCC,gBAAc,CACb;AAFwC,CAA3C",
+    "file": "..\\..\\..\\..\\src\\wx\\logic\\admin\\wx_goods_gallery.js",
+    "sourcesContent": [
+        "/**\n*商品轮播图\n*/\nmodule.exports = class extends think.Logic {\n  indexAction() {\n  }\n};"
+    ]
+}

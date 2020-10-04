@@ -1,0 +1,34 @@
+{
+    "version": 3,
+    "sources": [
+        "..\\..\\..\\..\\src\\wx\\controller\\api\\topic.js"
+    ],
+    "names": [
+        "Base",
+        "require",
+        "module",
+        "exports",
+        "listAction",
+        "model",
+        "data",
+        "field",
+        "order",
+        "sort_order",
+        "page",
+        "get",
+        "countSelect",
+        "success",
+        "detailAction",
+        "where",
+        "id",
+        "find",
+        "relatedAction",
+        "limit",
+        "select"
+    ],
+    "mappings": ";;AAAA,MAAMA,OAAOC,QAAQ,WAAR,CAAb;;AAEAC,OAAOC,OAAP,GAAiB,cAAcH,IAAd,CAAmB;AAC5BI,YAAN,GAAmB;AAAA;;AAAA;AACjB,YAAMC,QAAQ,MAAKA,KAAL,CAAW,UAAX,CAAd;AACA,YAAMC,OAAO,MAAMD,MAAME,KAAN,CAAY,CAAC,IAAD,EAAO,OAAP,EAAgB,YAAhB,EAA8B,eAA9B,EAA+C,UAA/C,CAAZ,EAAwEC,KAAxE,CAA8E,EAACC,YAAY,KAAb,EAA9E,EAAmGC,IAAnG,CAAwG,MAAKC,GAAL,CAAS,MAAT,KAAoB,CAA5H,EAA+H,MAAKA,GAAL,CAAS,MAAT,KAAoB,EAAnJ,EAAuJC,WAAvJ,EAAnB;;AAEA,aAAO,MAAKC,OAAL,CAAaP,IAAb,CAAP;AAJiB;AAKlB;;AAEKQ,cAAN,GAAqB;AAAA;;AAAA;AACnB,YAAMT,QAAQ,OAAKA,KAAL,CAAW,UAAX,CAAd;AACA,YAAMC,OAAO,MAAMD,MAAMU,KAAN,CAAY,EAACC,IAAI,OAAKL,GAAL,CAAS,IAAT,CAAL,EAAZ,EAAkCM,IAAlC,EAAnB;;AAEA,aAAO,OAAKJ,OAAL,CAAaP,IAAb,CAAP;AAJmB;AAKpB;;AAEKY,eAAN,GAAsB;AAAA;;AAAA;AACpB,YAAMb,QAAQ,OAAKA,KAAL,CAAW,UAAX,CAAd;AACA,YAAMC,OAAO,MAAMD,MAAME,KAAN,CAAY,CAAC,IAAD,EAAO,OAAP,EAAgB,YAAhB,EAA8B,eAA9B,EAA+C,UAA/C,CAAZ,EAAwEY,KAAxE,CAA8E,CAA9E,EAAiFC,MAAjF,EAAnB;;AAEA,aAAO,OAAKP,OAAL,CAAaP,IAAb,CAAP;AAJoB;AAKrB;AApBiC,CAApC",
+    "file": "..\\..\\..\\..\\src\\wx\\controller\\api\\topic.js",
+    "sourcesContent": [
+        "const Base = require('./base.js');\n\nmodule.exports = class extends Base {\n  async listAction() {\n    const model = this.model('wx_topic');\n    const data = await model.field(['id', 'title', 'price_info', 'scene_pic_url', 'subtitle']).order({sort_order: 'asc'}).page(this.get('page') || 1, this.get('size') || 10).countSelect();\n\n    return this.success(data);\n  }\n\n  async detailAction() {\n    const model = this.model('wx_topic');\n    const data = await model.where({id: this.get('id')}).find();\n\n    return this.success(data);\n  }\n\n  async relatedAction() {\n    const model = this.model('wx_topic');\n    const data = await model.field(['id', 'title', 'price_info', 'scene_pic_url', 'subtitle']).limit(4).select();\n\n    return this.success(data);\n  }\n};\n"
+    ]
+}

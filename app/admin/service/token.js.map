@@ -1,0 +1,29 @@
+{
+    "version": 3,
+    "sources": [
+        "..\\..\\..\\src\\admin\\service\\token.js"
+    ],
+    "names": [
+        "jwt",
+        "require",
+        "secret",
+        "think",
+        "config",
+        "module",
+        "exports",
+        "Service",
+        "createToken",
+        "userinfo",
+        "result",
+        "sign",
+        "verifyToken",
+        "token",
+        "verify",
+        "err"
+    ],
+    "mappings": "AAAA;AACA;;AACA,IAAIA,MAAMC,QAAQ,cAAR,CAAV;AACA;AACA,IAAIC,SAASC,MAAMC,MAAN,CAAa,WAAb,CAAb;;AAEAC,OAAOC,OAAP,GAAiB,cAAcH,MAAMI,OAApB,CAA4B;AAC5C;;;;;AAKAC,aAAYC,QAAZ,EAAsB;AACrB,MAAIC,SAASV,IAAIW,IAAJ,CAAS,EAACF,UAASA,QAAV,EAAT,EAA8BP,MAA9B,CAAb;AACA,SAAOQ,MAAP;AACA;;AAGD;;;;;AAKAE,aAAYC,KAAZ,EAAmB;AAClB,MAAIA,KAAJ,EAAW;AACV,OAAI;AACH,QAAIH,SAASV,IAAIc,MAAJ,CAAWD,KAAX,EAAkBX,MAAlB,CAAb;AACA,WAAOQ,MAAP;AACA,IAHD,CAGE,OAAOK,GAAP,EAAY;AACb;AACA,WAAO,KAAP;AACA;AACD;AACD,SAAO,KAAP;AACA;AA5B2C,CAA7C",
+    "file": "..\\..\\..\\src\\admin\\service\\token.js",
+    "sourcesContent": [
+        "'use strict';\n//引入jwt\nlet jwt = require('jsonwebtoken');\n//读取secret标记码\nlet secret = think.config(\"jwtsecret\");\n\nmodule.exports = class extends think.Service {\n\t/**\n\t * @description 创建token\n\t * @param {Object} userinfo 用户信息\n\t * @return 返回token\n\t */\n\tcreateToken(userinfo) {\n\t\tlet result = jwt.sign({userinfo:userinfo}, secret);\n\t\treturn result;\n\t}\n\n\n\t/**\n\t * @description 验证票据\n\t * @param {Object} token 用户请求token\n\t * @return 返回 错误或者解密过的token\n\t */\n\tverifyToken(token) {\n\t\tif (token) {\n\t\t\ttry {\n\t\t\t\tlet result = jwt.verify(token, secret);\n\t\t\t\treturn result;\n\t\t\t} catch (err) {\n\t\t\t\t//票据验证失败,需要提示需要重新登录\n\t\t\t\treturn false;\n\t\t\t}\n\t\t}\n\t\treturn false\n\t}\n};\n"
+    ]
+}
